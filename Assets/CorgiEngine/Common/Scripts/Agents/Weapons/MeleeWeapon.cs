@@ -141,6 +141,13 @@ namespace MoreMountains.CorgiEngine
 		}
 		
 
+		public void changeInvincibility(float input)
+        {
+			_damageOnTouch.InvincibilityDuration = input;
+
+
+		}
+
 		/// <summary>
 		/// When the weapon is used, we trigger our attack routine
 		/// </summary>

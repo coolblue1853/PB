@@ -13,7 +13,7 @@ namespace MoreMountains.CorgiEngine
 	{
 		public Health AffectedHealth;
 		public float NewHealth;
-		
+
 		public HealthChangeEvent(Health affectedHealth, float newHealth)
 		{
 			AffectedHealth = affectedHealth;
@@ -28,7 +28,7 @@ namespace MoreMountains.CorgiEngine
 			MMEventManager.TriggerEvent(e);
 		}
 	}
-	
+
 	/// <summary>
 	/// This class manages the health of an object, pilots its potential health bar, handles what happens when it takes damage,
 	/// and what happens when it dies.
@@ -37,7 +37,8 @@ namespace MoreMountains.CorgiEngine
 	public class Health : MonoBehaviour
 	{
 		/// the current health of the character
-		[MMReadOnly] [Tooltip("the current health of the character")]
+		[MMReadOnly]
+		[Tooltip("the current health of the character")]
 		public float CurrentHealth;
 
 		[Header("Health")]
@@ -57,26 +58,28 @@ namespace MoreMountains.CorgiEngine
 		public bool Invulnerable = false;
 
 		/// If this is true, this object can't take damage at the moment
-		[MMReadOnly] [Tooltip("If this is true, this object can't take damage at the moment")]
+		[MMReadOnly]
+		[Tooltip("If this is true, this object can't take damage at the moment")]
 		public bool TemporarilyInvulnerable = false;
 
 		/// If this is true, this object is in post damage invulnerability state
-		[MMReadOnly] [Tooltip("If this is true, this object is in post damage invulnerability state")]
+		[MMReadOnly]
+		[Tooltip("If this is true, this object is in post damage invulnerability state")]
 		public bool PostDamageInvulnerable = false;
 
 		[Header("Damage")]
 		[MMInformation(
 			"Here you can specify an effect and a sound FX to instantiate when the object gets damaged, and also how long the object should flicker when hit (only works for sprites).",
 			MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
-        
+
 		/// whether or not this Health object can be damaged, you can play with this on top of Invulnerable, which will be turned on/off temporarily for temporary invulnerability. ImmuneToDamage is more of a permanent solution. 
 		[Tooltip("whether or not this Health object can be damaged, you can play with this on top of Invulnerable, which will be turned on/off temporarily for temporary invulnerability. ImmuneToDamage is more of a permanent solution.")]
 		public bool ImmuneToDamage = false;
-        
+
 		/// the MMFeedbacks to play when the character gets hit
 		[Tooltip("the MMFeedbacks to play when the character gets hit")]
 		public MMFeedbacks DamageFeedbacks;
-        
+
 		/// if this is true, the damage value will be passed to the MMFeedbacks as its Intensity parameter, letting you trigger more intense feedbacks as damage increases
 		[Tooltip("if this is true, the damage value will be passed to the MMFeedbacks as its Intensity parameter, letting you trigger more intense feedbacks as damage increases")]
 		public bool FeedbackIsProportionalToDamage = false;
@@ -86,7 +89,8 @@ namespace MoreMountains.CorgiEngine
 		public bool FlickerSpriteOnHit = true;
 
 		/// the color the sprite should flicker to
-		[Tooltip("the color the sprite should flicker to")] [MMCondition("FlickerSpriteOnHit", true)]
+		[Tooltip("the color the sprite should flicker to")]
+		[MMCondition("FlickerSpriteOnHit", true)]
 		public Color FlickerColor = new Color32(255, 20, 20, 255);
 
 		/// whether or not this object can get knockback
@@ -141,7 +145,7 @@ namespace MoreMountains.CorgiEngine
 		/// whether or not the controller's forces should be set to 0 on death
 		[Tooltip("whether or not the controller's forces should be set to 0 on death")]
 		public bool ResetForcesOnDeath = false;
-        
+
 		/// if this is true, color will be reset on revive
 		[Tooltip("if this is true, color will be reset on revive")]
 		public bool ResetColorOnRevive = true;
@@ -150,9 +154,9 @@ namespace MoreMountains.CorgiEngine
 		[MMCondition("ResetColorOnRevive", true)]
 		public string ColorMaterialPropertyName = "_Color";
 		/// if this is true, this component will use material property blocks instead of working on an instance of the material.
-		[Tooltip("if this is true, this component will use material property blocks instead of working on an instance of the material.")] 
+		[Tooltip("if this is true, this component will use material property blocks instead of working on an instance of the material.")]
 		public bool UseMaterialPropertyBlocks = false;
-		
+
 		[Header("Shared Health and Damage Resistance")]
 		/// another Health component (usually on another character) towards which all health will be redirected
 		[Tooltip("another Health component (usually on another character) towards which all health will be redirected")]
@@ -169,7 +173,7 @@ namespace MoreMountains.CorgiEngine
 		public delegate void OnHitZeroDelegate();
 		public delegate void OnReviveDelegate();
 		public delegate void OnDeathDelegate();
-		
+
 		public OnDeathDelegate OnDeath;
 		public OnHitDelegate OnHit;
 		public OnHitZeroDelegate OnHitZero;
@@ -228,7 +232,7 @@ namespace MoreMountains.CorgiEngine
 						_renderer = _character.CharacterModel.GetComponentInChildren<Renderer>();
 					}
 				}
-				
+
 				if (_character.CharacterAnimator != null)
 				{
 					_animator = _character.CharacterAnimator;
@@ -257,15 +261,12 @@ namespace MoreMountains.CorgiEngine
 			_interruptiblesDamageOverTimeCoroutines = new List<InterruptiblesDamageOverTimeCoroutine>();
 
 			_propertyBlock = new MaterialPropertyBlock();
-            
-			StoreInitialPosition();    
+
+			StoreInitialPosition();
 			_initialized = true;
 			CurrentHealth = InitialHealth;
 			DamageEnabled();
-
-							DisablePostDamageInvulnerability();
-
-
+			DisablePostDamageInvulnerability();
 			UpdateHealthBar(false);
 		}
 
@@ -301,7 +302,7 @@ namespace MoreMountains.CorgiEngine
 					{
 						_hasColorProperty = true;
 						_initialColor = _renderer.material.GetColor(ColorMaterialPropertyName);
-					} 
+					}
 				}
 			}
 		}
@@ -317,7 +318,7 @@ namespace MoreMountains.CorgiEngine
 				{
 					_renderer.GetPropertyBlock(_propertyBlock);
 					_propertyBlock.SetColor(ColorMaterialPropertyName, _initialColor);
-					_renderer.SetPropertyBlock(_propertyBlock);    
+					_renderer.SetPropertyBlock(_propertyBlock);
 				}
 				else
 				{
@@ -325,7 +326,7 @@ namespace MoreMountains.CorgiEngine
 				}
 			}
 		}
-		
+
 		/// <summary>
 		/// Returns true if this Health component can be damaged this frame, and false otherwise
 		/// </summary>
@@ -342,7 +343,7 @@ namespace MoreMountains.CorgiEngine
 			{
 				return false;
 			}
-			
+
 			// if we're already below zero, we do nothing and exit
 			if ((CurrentHealth <= 0) && (InitialHealth != 0))
 			{
@@ -381,7 +382,7 @@ namespace MoreMountains.CorgiEngine
 			}
 
 			damage = ComputeDamageOutput(damage, typedDamages, true);
-			
+
 			// we decrease the character's health by the damage
 			float previousHealth = CurrentHealth;
 			CurrentHealth -= damage;
@@ -394,15 +395,12 @@ namespace MoreMountains.CorgiEngine
 			{
 				CurrentHealth = 0;
 			}
-			
 
 			// we prevent the character from colliding with Projectiles, Player and Enemies
 			if (invincibilityDuration > 0)
 			{
 				EnablePostDamageInvulnerability();
-
-				// 이 파트 고쳐야 합니다.
-				StartCoroutine(DisablePostDamageInvulnerability(0.1f));
+				StartCoroutine(DisablePostDamageInvulnerability(invincibilityDuration));
 			}
 
 			// we trigger a damage taken event
@@ -416,7 +414,7 @@ namespace MoreMountains.CorgiEngine
 			// we play the damage feedback
 			if (FeedbackIsProportionalToDamage)
 			{
-				DamageFeedbacks?.PlayFeedbacks(this.transform.position, damage);    
+				DamageFeedbacks?.PlayFeedbacks(this.transform.position, damage);
 			}
 			else
 			{
@@ -435,11 +433,11 @@ namespace MoreMountains.CorgiEngine
 			// we update the health bar
 			UpdateHealthBar(true);
 
-			
+
 			// we process any condition state change
 			ComputeCharacterConditionStateChanges(typedDamages);
 			ComputeCharacterMovementMultipliers(typedDamages);
-			
+
 			// if health has reached zero we set its health to zero (useful for the healthbar)
 			if (MasterHealth != null)
 			{
@@ -468,7 +466,7 @@ namespace MoreMountains.CorgiEngine
 			{
 				return;
 			}
-			
+
 			if (_character != null)
 			{
 				// we set its dead state to true
@@ -481,7 +479,7 @@ namespace MoreMountains.CorgiEngine
 				}
 			}
 			SetHealth(0f, this.gameObject);
-            
+
 			// we prevent further damage
 			DamageDisabled();
 
@@ -640,7 +638,7 @@ namespace MoreMountains.CorgiEngine
 				_autoRespawn.Kill();
 			}
 		}
-		
+
 		/// <summary>
 		/// Interrupts all damage over time, regardless of type
 		/// </summary>
@@ -662,7 +660,7 @@ namespace MoreMountains.CorgiEngine
 			{
 				if (coroutine.DamageOverTimeType == damageType)
 				{
-					StopCoroutine(coroutine.DamageOverTimeCoroutine);	
+					StopCoroutine(coroutine.DamageOverTimeCoroutine);
 				}
 			}
 			TargetDamageResistanceProcessor?.InterruptDamageOverTime(damageType);
@@ -740,7 +738,7 @@ namespace MoreMountains.CorgiEngine
 			{
 				if (TargetDamageResistanceProcessor.isActiveAndEnabled)
 				{
-					totalDamage = TargetDamageResistanceProcessor.ProcessDamage(damage, typedDamages, damageApplied);	
+					totalDamage = TargetDamageResistanceProcessor.ProcessDamage(damage, typedDamages, damageApplied);
 				}
 			}
 			else
@@ -780,11 +778,11 @@ namespace MoreMountains.CorgiEngine
 								TargetDamageResistanceProcessor.CheckPreventCharacterConditionChange(typedDamage.AssociatedDamageType);
 							if (checkResistance)
 							{
-								continue;		
+								continue;
 							}
 						}
 					}
-					_character.ChangeCharacterConditionTemporarily(typedDamage.ForcedCondition, typedDamage.ForcedConditionDuration, typedDamage.ResetControllerForces, typedDamage.DisableGravity);	
+					_character.ChangeCharacterConditionTemporarily(typedDamage.ForcedCondition, typedDamage.ForcedConditionDuration, typedDamage.ResetControllerForces, typedDamage.DisableGravity);
 				}
 			}
 
@@ -813,12 +811,12 @@ namespace MoreMountains.CorgiEngine
 								TargetDamageResistanceProcessor.CheckPreventMovementModifier(typedDamage.AssociatedDamageType);
 							if (checkResistance)
 							{
-								continue;		
+								continue;
 							}
 						}
 					}
 
-					_characterHorizontalMovement?.ApplyContextSpeedMultiplier(typedDamage.MovementMultiplier,typedDamage.MovementMultiplierDuration);
+					_characterHorizontalMovement?.ApplyContextSpeedMultiplier(typedDamage.MovementMultiplier, typedDamage.MovementMultiplierDuration);
 				}
 			}
 
