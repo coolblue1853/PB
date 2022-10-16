@@ -156,7 +156,7 @@ MonoBehaviour:
   Animators: []
   EquippedAnimationParameter: 
   IdleAnimationParameter: 
-  StartAnimationParameter: attack3
+  StartAnimationParameter: rizing
   DelayBeforeUseAnimationParameter: 
   SingleUseAnimationParameter: 
   UseAnimationParameter: 

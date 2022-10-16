@@ -8,7 +8,7 @@ namespace MoreMountains.CorgiEngine
 {
         public static bool 채팅줄끝남 = false;
         public static float attackInterval;
-
+        public static bool changeNomalAttack;
 
         static public DataBaseManager instance;
 

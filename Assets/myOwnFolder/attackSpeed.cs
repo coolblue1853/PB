@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace MoreMountains.CorgiEngine
 {
-    public class attackSpeed : Health
+    public class attackSpeed : MonoBehaviour
     {
         float attSpd;
 
@@ -41,31 +41,44 @@ namespace MoreMountains.CorgiEngine
             ani.SetFloat("attackSpeed", 1);
         }
 
+        public string nowSpeed;
+        public void faster()
+        {
+            restting();
+            attSpd = 0.1f;
+            weapon1.TimeBetweenUses = 0.4f * attSpd;
+            weapon2.TimeBetweenUses = 0.5f * attSpd;
+            weapon3.TimeBetweenUses = 0.5f * attSpd;
+            weapon1.ActiveDuration = 0.4f * attSpd;
+            weapon2.ActiveDuration = 0.5f * attSpd;
+            weapon3.ActiveDuration = 0.5f * attSpd;
+
+            weapon1.changeInvincibility(weapon1.ActiveDuration + 0.05f);
+            weapon2.changeInvincibility(weapon1.ActiveDuration + 0.05f);
+            weapon3.changeInvincibility(weapon3.ActiveDuration + 0.05f);
+
+            ani.SetFloat("attackSpeed", ani.GetFloat("attackSpeed") / attSpd);
+        }
+
+        int speed;
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.X))
+            if (speed == 10&& DataBaseManager.changeNomalAttack == true)
             {
-                
+                DataBaseManager.changeNomalAttack = false;
+                faster();
+
             }
+
+
 
             if (Input.GetKeyDown(KeyCode.Alpha0))
             {
-                restting();
-                attSpd = 0.1f;
-                weapon1.TimeBetweenUses = 0.4f * attSpd;
-                weapon2.TimeBetweenUses = 0.5f * attSpd;
-                weapon3.TimeBetweenUses = 0.5f * attSpd;
-                weapon1.ActiveDuration = 0.4f * attSpd;
-                weapon2.ActiveDuration = 0.5f * attSpd;
-                weapon3.ActiveDuration = 0.5f * attSpd;
-
-                weapon1.changeInvincibility(weapon1.ActiveDuration + 0.05f);
-                weapon2.changeInvincibility(weapon1.ActiveDuration + 0.05f);
-                weapon3.changeInvincibility(weapon3.ActiveDuration + 0.05f);
-
-                ani.SetFloat("attackSpeed", ani.GetFloat("attackSpeed") / attSpd);
+                speed = 10;
+                faster();
             }
+
             if (Input.GetKeyDown(KeyCode.Alpha9))
             {
                 restting();
