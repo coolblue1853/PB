@@ -288,8 +288,11 @@ namespace MoreMountains.CorgiEngine
 		public string WeaponID { get; set; }
 		/// the weapon's owner
 		public Character Owner { get; protected set; }
-		/// the weapon's owner's CharacterHandleWeapon component
+		/// the weapon's owner's Character
+		/// 
+		/// component
 		public CharacterHandleWeapon CharacterHandleWeapon {get; set;}
+
 		/// if true, the weapon is flipped
 		public bool Flipped { get; set; }
 		/// the WeaponAmmo component optionnally associated to this weapon
@@ -451,7 +454,7 @@ namespace MoreMountains.CorgiEngine
 		}
 
 		#endregion Initialization
-                
+
 		/// <summary>
 		/// On Update, we check if the weapon is or should be used
 		/// </summary>

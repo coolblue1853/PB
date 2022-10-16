@@ -45,7 +45,8 @@ namespace MoreMountains.CorgiEngine
 
 		[Header("Input and automation")]
 
-		/// if this is true you won't have to release your fire button to auto reload
+		/// if this is true you won't have to release your fire 
+		/// to auto reload
 		[Tooltip("if this is true you won't have to release your fire button to auto reload")]
 		public bool ContinuousPress = false;
 		/// whether or not this character getting hit should interrupt its attack (will only work if the weapon is marked as interruptable)

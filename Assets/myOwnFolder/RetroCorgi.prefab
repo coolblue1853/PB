@@ -4710,7 +4710,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e0e80ff7156603346bbdc8c121863234, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4754,6 +4753,54 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &2073391926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2073391927}
+  - component: {fileID: 2506172203504216922}
+  m_Layer: 9
+  m_Name: skillManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2073391927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073391926}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4135398658232238}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2506172203504216922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073391926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5825ef59c6fe2b4cb23d701a4e37a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialWeapon: {fileID: 114066937058401760, guid: 804a6978904b4ac4e9adc187c6fa72be,
+    type: 3}
+  rizingCut: {fileID: 7113271954073899082, guid: b0af481430afacc4fa131b73ade6d75d,
+    type: 3}
+  min: {fileID: 114238553675504360}
 --- !u!1 &1308657322180086
 GameObject:
   m_ObjectHideFlags: 0
@@ -4827,6 +4874,7 @@ GameObject:
   - component: {fileID: 5683150900215798491}
   - component: {fileID: 3138931876945488989}
   - component: {fileID: 4180109729192305093}
+  - component: {fileID: 7480484913815595319}
   m_Layer: 9
   m_Name: RetroCorgi
   m_TagString: Player
@@ -4847,6 +4895,7 @@ Transform:
   m_Children:
   - {fileID: 3226905252963850618}
   - {fileID: 481845280274498306}
+  - {fileID: 2073391927}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4996,7 +5045,7 @@ MonoBehaviour:
     DisplayWarnings: 1
   PlatformMask:
     serializedVersion: 2
-    m_Bits: 134217984
+    m_Bits: 256
   MovingPlatformMask:
     serializedVersion: 2
     m_Bits: 262144
@@ -5751,6 +5800,25 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   controller: {fileID: 0}
+--- !u!114 &7480484913815595319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383539409296422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98ba246fa819940cb8f8f89f002bb088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  DanglingRaycastOrigin: {x: 0.7, y: -0.25, z: 0}
+  DanglingRaycastLength: 2
 --- !u!1 &1693914667617252
 GameObject:
   m_ObjectHideFlags: 0
@@ -10462,7 +10530,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f0e84f126615c4432b13bcee92a2ff8b, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15299,7 +15366,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 40ecb205691fb1e47adc78750fb4c833, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20948,7 +21014,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f5b7ac523bdec1748a0957cb4219b271, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25702,7 +25767,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f5b7ac523bdec1748a0957cb4219b271, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -35301,7 +35365,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 54bad539260b17649af3fa6e50c6d9a1, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -50053,7 +50116,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a1a494236fc81314c8aa9585a019ccdc, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74969,7 +75031,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: da584bb788703ac46862ec58b3748727, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79978,7 +80039,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0f0391ab7f0c7774180de4df6c1b4cc0, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85608,7 +85668,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 4f4225e49dbb2e0448fc5fdd8cb57e64, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85970,6 +86029,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e03adb8b7bbfc74d8328c138353af33, type: 3}
+--- !u!4 &3126038284277431613 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6077646854188801633, guid: 1e03adb8b7bbfc74d8328c138353af33,
+    type: 3}
+  m_PrefabInstance: {fileID: 9167579368649728860}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7120035660485157472 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2159118029588644156, guid: 1e03adb8b7bbfc74d8328c138353af33,
@@ -85982,9 +86047,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841b72de2996c5c40bfb394f3d0e0a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &3126038284277431613 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6077646854188801633, guid: 1e03adb8b7bbfc74d8328c138353af33,
-    type: 3}
-  m_PrefabInstance: {fileID: 9167579368649728860}
-  m_PrefabAsset: {fileID: 0}
