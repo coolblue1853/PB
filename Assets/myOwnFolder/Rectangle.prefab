@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: -4342895061800036961}
   - component: {fileID: 1269681504}
   - component: {fileID: 424889276747562171}
+  - component: {fileID: 809759419596040505}
   m_Layer: 9
   m_Name: Rectangle
   m_TagString: Player
@@ -943,7 +944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a07c6668aa55403790d27b575279549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStartFeedbacks: {fileID: 2159118029588644156, guid: 1e03adb8b7bbfc74d8328c138353af33,
+    type: 3}
   AbilityStopFeedbacks: {fileID: 0}
   AbilityPermitted: 1
   BlockingMovementStates: 
@@ -958,13 +960,30 @@ MonoBehaviour:
   AmmoDisplayID: 0
   ContinuousPress: 0
   GettingHitInterruptsAttack: 0
-  CanShootFromLadders: 0
+  CanShootFromLadders: 1
   FaceWeaponDirection: 0
-  InvertHorizontalAimWhenWallclinging: 0
-  BufferInput: 0
-  NewInputExtendsBuffer: 0
-  MaximumBufferDuration: 0.25
+  InvertHorizontalAimWhenWallclinging: 1
+  BufferInput: 1
+  NewInputExtendsBuffer: 1
+  MaximumBufferDuration: 0.3
   CurrentWeapon: {fileID: 0}
+--- !u!114 &809759419596040505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1133202ebf6d40d897f057171e4c80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
 --- !u!1 &159142
 GameObject:
   m_ObjectHideFlags: 0

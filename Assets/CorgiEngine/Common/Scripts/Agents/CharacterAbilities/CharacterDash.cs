@@ -150,7 +150,7 @@ namespace MoreMountains.CorgiEngine
 
 
 
-
+		
 		/// <summary>
 		/// Causes the character to dash or dive (depending on the vertical movement at the start of the dash)
 		/// </summary>
@@ -167,7 +167,7 @@ namespace MoreMountains.CorgiEngine
 			}
 			if (nowStemina > dashSt)
             {
-                Debug.Log("1");
+
 
                 CharacterAbility.isAction = true;
 				CharacterAbility.removeStemina(dashSt);
@@ -431,6 +431,7 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		public virtual void StopDash()
 		{
+
 
 			CharacterAbility.isAction = false;
 			if (_dashCoroutine != null)

@@ -1,16 +1,31 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.CorgiEngine
 {
+
+
+
 	/// <summary>
 	/// A basic melee weapon class, that will activate a "hurt zone" when the weapon is used
 	/// </summary>
 	[AddComponentMenu("Corgi Engine/Weapons/Melee Weapon")]
 	public class MeleeWeapon : Weapon 
 	{
+
+		public CorgiController controller;
+
+		private void Start()
+		{
+			controller = GameObject.Find("RetroCorgi").GetComponent<CorgiController>();
+
+		}
+	
+
+
 		/// the possible shapes for the melee weapon's damage area
 		public enum MeleeDamageAreaShapes { Rectangle, Circle }
 
@@ -124,14 +139,19 @@ namespace MoreMountains.CorgiEngine
 			_damageOnTouch.DamageCausedKnockbackForce = KnockbackForce;
 			_damageOnTouch.InvincibilityDuration = InvincibilityDuration;
 		}
+		
 
 		/// <summary>
 		/// When the weapon is used, we trigger our attack routine
 		/// </summary>
 		protected override void WeaponUse()
 		{
-			base.WeaponUse ();
+
+			base.WeaponUse();
 			_meleeWeaponAttack = StartCoroutine(MeleeWeaponAttack());
+			
+
+
 		}
 
 		/// <summary>
@@ -140,8 +160,17 @@ namespace MoreMountains.CorgiEngine
 		/// <returns>The weapon attack.</returns>
 		protected virtual IEnumerator MeleeWeaponAttack()
 		{
+			
 			if (_attackInProgress) { yield break; }
 
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+				controller.AddHorizontalForce(50);
+            }
+			if (Input.GetKey(KeyCode.LeftArrow))
+			{
+				controller.AddHorizontalForce(-50);
+			}
 			_attackInProgress = true;
 			yield return new WaitForSeconds(InitialDelay);
 			EnableDamageArea();
@@ -150,6 +179,7 @@ namespace MoreMountains.CorgiEngine
 			yield return new WaitForSeconds(ActiveDuration);
 			DisableDamageArea();
 			_attackInProgress = false;
+
 		}
 
 		/// <summary>

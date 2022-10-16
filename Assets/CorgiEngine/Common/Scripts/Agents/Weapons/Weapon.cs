@@ -14,7 +14,7 @@ namespace MoreMountains.CorgiEngine
 	[System.Serializable]
 	public class WeaponRecoilProperties
 	{
-		/// The force to apply to the Weapon owner if it's grounded when this recoil is triggered
+		/// The force to apply to the Weapon owner if it's grounded when this recoil is triggeredt
 		[Tooltip("The force to apply to the Weapon owner if it's grounded when this recoil is triggered")]
 		public float RecoilForceGrounded = 10f;
 		/// The force to apply to the Weapon owner if it's airborne when this recoil is triggered
@@ -38,6 +38,7 @@ namespace MoreMountains.CorgiEngine
 	[MMRequiresConstantRepaint]
 	public class Weapon : MMMonoBehaviour
 	{
+	
 		/// the possible use modes for the trigger
 		public enum TriggerModes { SemiAuto, Auto }
 		/// the possible states the weapon can be in
@@ -65,7 +66,9 @@ namespace MoreMountains.CorgiEngine
 		/// If this is true, the weapon will initialize itself on start, otherwise it'll have to be init manually, usually by the CharacterHandleWeapon class
 		[Tooltip("If this is true, the weapon will initialize itself on start, otherwise it'll have to be init manually, usually by the CharacterHandleWeapon class")]
 		public bool InitializeOnStart = false;
+		public float usingStemina;
 
+	
 		[MMInspectorGroup("Magazine", true, 24)]
 
 		/// whether or not the weapon is magazine based. If it's not, it'll just take its ammo inside a global pool
@@ -462,6 +465,7 @@ namespace MoreMountains.CorgiEngine
 		{
 			ProcessWeaponState();
 		}
+		
 
 		#region Input
 

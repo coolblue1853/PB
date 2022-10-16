@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using MoreMountains.Tools;
 using MoreMountains.Feedbacks;
+using UnityEngine.PlayerLoop;
 
 namespace MoreMountains.CorgiEngine
 {
@@ -96,8 +97,11 @@ namespace MoreMountains.CorgiEngine
 
 		public static float dashSt = 150f;
 
+
+
 		/// This method is only used to display a helpbox text at the beginning of the ability's inspector
 		public virtual string HelpBoxText() { return ""; }
+
 
 
 		public static void removeStemina(float removeInt)
@@ -105,11 +109,14 @@ namespace MoreMountains.CorgiEngine
 			nowStemina = nowStemina - removeInt;
 
 		}
+
+
 		/// <summary>
 		/// On Start(), we call the ability's intialization
 		/// </summary>
 		protected virtual void Start()
 		{
+
 			Initialization();
 		}
 

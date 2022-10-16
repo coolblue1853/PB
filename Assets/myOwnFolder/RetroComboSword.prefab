@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 114246937138071502}
   - component: {fileID: 114032460549813266}
   - component: {fileID: 114169761508843964}
+  - component: {fileID: 9129324444575833982}
   m_Layer: 0
   m_Name: RetroComboSword
   m_TagString: Untagged
@@ -56,6 +57,7 @@ MonoBehaviour:
   TimeBetweenUsesReleaseInterruption: 0
   Interruptable: 0
   InitializeOnStart: 0
+  usingStemina: 200
   MagazineBased: 0
   MagazineSize: 30
   AutoReload: 0
@@ -74,9 +76,9 @@ MonoBehaviour:
   ModifyMovementWhileAttacking: 0
   MovementMultiplier: 0
   AlwaysResetMultiplierToInitial: 1
-  PreventHorizontalGroundMovementWhileInUse: 0
+  PreventHorizontalGroundMovementWhileInUse: 1
   PreventHorizontalAirMovementWhileInUse: 0
-  SetForceWhileInUse: 1
+  SetForceWhileInUse: 0
   ForceWhileInUse: {x: 0, y: 0}
   Animators: []
   EquippedAnimationParameter: 
@@ -93,7 +95,7 @@ MonoBehaviour:
   WeaponAngleAnimationParameter: 
   WeaponAngleRelativeAnimationParameter: 
   WeaponStartMMFeedback: {fileID: 0}
-  WeaponUsedMMFeedback: {fileID: 1732678355458396849}
+  WeaponUsedMMFeedback: {fileID: 0}
   WeaponStopMMFeedback: {fileID: 0}
   WeaponReloadMMFeedback: {fileID: 0}
   WeaponReloadNeededMMFeedback: {fileID: 0}
@@ -137,17 +139,18 @@ MonoBehaviour:
     RecoilStyle: 2
     Delay: 0
     RecoilFeedback: {fileID: 0}
+  controller: {fileID: 0}
   DamageAreaShape: 0
   AreaSize: {x: 1, y: 1}
   AreaOffset: {x: 0.85, y: 0}
   InitialDelay: 0
-  ActiveDuration: 0.2
+  ActiveDuration: 0.3
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 8448
   DamageCaused: 10
-  Knockback: 0
-  KnockbackForce: {x: 10, y: 2}
+  Knockback: 1
+  KnockbackForce: {x: 0, y: 2}
   InvincibilityDuration: 0.5
 --- !u!114 &114246937138071502
 MonoBehaviour:
@@ -164,10 +167,11 @@ MonoBehaviour:
   TriggerMode: 0
   DelayBeforeUse: 0
   DelayBeforeUseReleaseInterruption: 1
-  TimeBetweenUses: 0.5
+  TimeBetweenUses: 0.3
   TimeBetweenUsesReleaseInterruption: 0
   Interruptable: 0
   InitializeOnStart: 0
+  usingStemina: 100
   MagazineBased: 0
   MagazineSize: 30
   AutoReload: 0
@@ -186,9 +190,9 @@ MonoBehaviour:
   ModifyMovementWhileAttacking: 0
   MovementMultiplier: 0
   AlwaysResetMultiplierToInitial: 1
-  PreventHorizontalGroundMovementWhileInUse: 0
+  PreventHorizontalGroundMovementWhileInUse: 1
   PreventHorizontalAirMovementWhileInUse: 0
-  SetForceWhileInUse: 1
+  SetForceWhileInUse: 0
   ForceWhileInUse: {x: 0, y: 0}
   Animators: []
   EquippedAnimationParameter: 
@@ -205,7 +209,7 @@ MonoBehaviour:
   WeaponAngleAnimationParameter: 
   WeaponAngleRelativeAnimationParameter: 
   WeaponStartMMFeedback: {fileID: 0}
-  WeaponUsedMMFeedback: {fileID: 7034347962012186301}
+  WeaponUsedMMFeedback: {fileID: 0}
   WeaponStopMMFeedback: {fileID: 0}
   WeaponReloadMMFeedback: {fileID: 0}
   WeaponReloadNeededMMFeedback: {fileID: 0}
@@ -249,17 +253,18 @@ MonoBehaviour:
     RecoilStyle: 2
     Delay: 0
     RecoilFeedback: {fileID: 0}
+  controller: {fileID: 0}
   DamageAreaShape: 0
   AreaSize: {x: 2, y: 2}
   AreaOffset: {x: 2, y: 0}
   InitialDelay: 0
-  ActiveDuration: 0.2
+  ActiveDuration: 0.3
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 8448
   DamageCaused: 10
-  Knockback: 0
-  KnockbackForce: {x: 10, y: 2}
+  Knockback: 1
+  KnockbackForce: {x: 0, y: 2}
   InvincibilityDuration: 0.5
 --- !u!114 &114032460549813266
 MonoBehaviour:
@@ -280,6 +285,7 @@ MonoBehaviour:
   TimeBetweenUsesReleaseInterruption: 0
   Interruptable: 0
   InitializeOnStart: 0
+  usingStemina: 300
   MagazineBased: 0
   MagazineSize: 30
   AutoReload: 0
@@ -298,9 +304,9 @@ MonoBehaviour:
   ModifyMovementWhileAttacking: 0
   MovementMultiplier: 0
   AlwaysResetMultiplierToInitial: 1
-  PreventHorizontalGroundMovementWhileInUse: 0
+  PreventHorizontalGroundMovementWhileInUse: 1
   PreventHorizontalAirMovementWhileInUse: 0
-  SetForceWhileInUse: 1
+  SetForceWhileInUse: 0
   ForceWhileInUse: {x: 0, y: 0}
   Animators: []
   EquippedAnimationParameter: 
@@ -317,7 +323,7 @@ MonoBehaviour:
   WeaponAngleAnimationParameter: 
   WeaponAngleRelativeAnimationParameter: 
   WeaponStartMMFeedback: {fileID: 0}
-  WeaponUsedMMFeedback: {fileID: 2373310158076016577}
+  WeaponUsedMMFeedback: {fileID: 0}
   WeaponStopMMFeedback: {fileID: 0}
   WeaponReloadMMFeedback: {fileID: 0}
   WeaponReloadNeededMMFeedback: {fileID: 0}
@@ -328,7 +334,7 @@ MonoBehaviour:
   WeaponOnKillFeedback: {fileID: 0}
   ApplyRecoilOnUse: 0
   RecoilOnUseProperties:
-    RecoilForceGrounded: 10
+    RecoilForceGrounded: -10
     RecoilForceAirborne: 10
     RecoilStyle: 2
     Delay: 0
@@ -361,6 +367,7 @@ MonoBehaviour:
     RecoilStyle: 2
     Delay: 0
     RecoilFeedback: {fileID: 0}
+  controller: {fileID: 0}
   DamageAreaShape: 0
   AreaSize: {x: 1.5, y: 1.5}
   AreaOffset: {x: 0.5, y: 0}
@@ -370,8 +377,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8448
   DamageCaused: 10
-  Knockback: 0
-  KnockbackForce: {x: 10, y: 2}
+  Knockback: 1
+  KnockbackForce: {x: 0, y: 3}
   InvincibilityDuration: 0.5
 --- !u!114 &114169761508843964
 MonoBehaviour:
@@ -386,11 +393,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DroppableCombo: 1
-  DropComboDelay: 0.5
+  DropComboDelay: 0.3
   ComboInProgressAnimationParameter: ComboInProgress
   Weapons: []
   OwnerCharacterHandleWeapon: {fileID: 0}
   TimeSinceLastWeaponStopped: 0
+--- !u!114 &9129324444575833982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987079591012776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29c6f2bba346ac448966f5d40cfef18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attSpd: 0
+  weapon1: {fileID: 114066937058401760}
+  weapon2: {fileID: 114246937138071502}
+  weapon3: {fileID: 114032460549813266}
+  ani: {fileID: 0}
 --- !u!1 &263493511036029803
 GameObject:
   m_ObjectHideFlags: 0

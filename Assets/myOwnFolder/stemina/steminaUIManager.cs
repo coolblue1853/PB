@@ -23,8 +23,10 @@ namespace MoreMountains.CorgiEngine
         bool oneTime= false;
         void restCheck()
         {
-            if (isAction == true && oneTime== false)
+            if ((isAction == true) && oneTime== false)
             {
+                CharacterAbility.isAction = false;
+                Debug.Log("stay");
                 oneTime = true;
                 CharacterAbility.isRestOneSec = false;
                 StartCoroutine(oneSecChecker());
@@ -33,6 +35,7 @@ namespace MoreMountains.CorgiEngine
 
         IEnumerator oneSecChecker()
         {
+
             yield return new WaitForSecondsRealtime(1f);
             isRestOneSec = true;
             oneTime = false;
@@ -55,7 +58,7 @@ namespace MoreMountains.CorgiEngine
                         CharacterAbility.nowStemina = CharacterAbility.nowStemina + Time.deltaTime * recoveryAmount;
                     }
                     else if (CharacterAbility.isRestOneSec == true)
-                        {
+                    {
                         CharacterAbility.nowStemina = CharacterAbility.nowStemina + Time.deltaTime * recoveryAmount *4;
                     }
 

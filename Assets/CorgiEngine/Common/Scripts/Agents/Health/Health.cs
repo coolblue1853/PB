@@ -262,7 +262,10 @@ namespace MoreMountains.CorgiEngine
 			_initialized = true;
 			CurrentHealth = InitialHealth;
 			DamageEnabled();
-			DisablePostDamageInvulnerability();
+
+							DisablePostDamageInvulnerability();
+
+
 			UpdateHealthBar(false);
 		}
 
@@ -391,12 +394,15 @@ namespace MoreMountains.CorgiEngine
 			{
 				CurrentHealth = 0;
 			}
+			
 
 			// we prevent the character from colliding with Projectiles, Player and Enemies
 			if (invincibilityDuration > 0)
 			{
 				EnablePostDamageInvulnerability();
-				StartCoroutine(DisablePostDamageInvulnerability(invincibilityDuration));
+
+				// 이 파트 고쳐야 합니다.
+				StartCoroutine(DisablePostDamageInvulnerability(0.1f));
 			}
 
 			// we trigger a damage taken event
