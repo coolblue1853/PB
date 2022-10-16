@@ -46,6 +46,8 @@ namespace MoreMountains.CorgiEngine
 
 		[MMInspectorGroup("General Settings", true, 12)]
 		/// is this weapon on semi or full auto ?
+		/// 
+		public GameObject stunZone;
 		[Tooltip("is this weapon on semi or full auto ?")]
 		public TriggerModes TriggerMode = TriggerModes.Auto;
 		/// the delay before use, that will be applied for every shot

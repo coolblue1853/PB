@@ -165,14 +165,24 @@ namespace MoreMountains.CorgiEngine
 			{
 				return;
 			}
-			if (nowStemina > dashSt)
+			if (this.transform.tag == "Player")
+			{
+				if (nowStemina > dashSt)
+				{
+
+
+					CharacterAbility.isAction = true;
+					CharacterAbility.removeStemina(dashSt);
+					InitiateDash();
+
+				}
+			}
+
+            else
             {
-
-
-                CharacterAbility.isAction = true;
-				CharacterAbility.removeStemina(dashSt);
 				InitiateDash();
 			}
+			
 
 		}
 

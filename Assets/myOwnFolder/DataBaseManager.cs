@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace MoreMountains.CorgiEngine
 {
-    public class DataBaseManager : Health
+    public class DataBaseManager : MonoBehaviour
 {
         public static bool 채팅줄끝남 = false;
         public static float attackInterval;

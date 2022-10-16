@@ -13,7 +13,7 @@ namespace MoreMountains.CorgiEngine
 	/// A basic melee weapon class, that will activate a "hurt zone" when the weapon is used
 	/// </summary>
 	[AddComponentMenu("Corgi Engine/Weapons/Melee Weapon")]
-	public class MeleeWeapon : Weapon 
+	public class MeleeWeapon : Weapon
 	{
 
 		public CorgiController controller;
@@ -86,10 +86,12 @@ namespace MoreMountains.CorgiEngine
 		protected bool _killEventSent = false;
 		protected bool _eventsRegistered = false;
 		protected Coroutine _meleeWeaponAttack;
-        
+
 		/// <summary>
 		/// Initialization
 		/// </summary>
+		/// 
+		public GameObject stunzone;
 		public override void Initialization()
 		{
 			base.Initialization();
@@ -178,6 +180,7 @@ namespace MoreMountains.CorgiEngine
 			{
 				controller.AddHorizontalForce(-50);
 			}
+			stunZone.SetActive(true);
 			_attackInProgress = true;
 			yield return new WaitForSeconds(InitialDelay);
 			EnableDamageArea();

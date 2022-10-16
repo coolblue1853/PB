@@ -68,6 +68,7 @@ namespace MoreMountains.CorgiEngine
 		/// <param name="collider"></param>
 		protected virtual void Colliding(GameObject collider)
 		{
+
 			if (!MMLayers.LayerInLayerMask(collider.layer, TargetLayerMask))
 			{
 				return;
