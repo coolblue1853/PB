@@ -26,13 +26,13 @@ namespace MoreMountains.CorgiEngine
             weapon2.TimeBetweenUses = 0.5f;
             weapon3 .TimeBetweenUses = 0.5f;
 
-            weapon1.ActiveDuration = 0.4f;
-            weapon2.ActiveDuration = 0.5f ;
-            weapon3.ActiveDuration = 0.5f;
+            weapon1.ActiveDuration = 0.37f;
+            weapon2.ActiveDuration = 0.47f ;
+            weapon3.ActiveDuration = 0.47f;
 
-            weapon1.changeInvincibility(weapon1.ActiveDuration+0.05f);
-            weapon2.changeInvincibility(weapon1.ActiveDuration + 0.05f);
-            weapon3.changeInvincibility(weapon3.ActiveDuration + 0.05f);
+            weapon1.changeInvincibility(weapon1.ActiveDuration);
+            weapon2.changeInvincibility(weapon1.ActiveDuration);
+            weapon3.changeInvincibility(weapon1.ActiveDuration);        
 
 
 
@@ -45,17 +45,17 @@ namespace MoreMountains.CorgiEngine
         public void faster()
         {
             restting();
-            attSpd = 0.1f;
+            attSpd = 5f;
             weapon1.TimeBetweenUses = 0.4f * attSpd;
             weapon2.TimeBetweenUses = 0.5f * attSpd;
             weapon3.TimeBetweenUses = 0.5f * attSpd;
-            weapon1.ActiveDuration = 0.4f * attSpd;
-            weapon2.ActiveDuration = 0.5f * attSpd;
-            weapon3.ActiveDuration = 0.5f * attSpd;
+            weapon1.ActiveDuration = 0.37f * attSpd;
+            weapon2.ActiveDuration = 0.47f * attSpd;
+            weapon3.ActiveDuration = 0.47f * attSpd;
 
-            weapon1.changeInvincibility(weapon1.ActiveDuration + 0.05f);
-            weapon2.changeInvincibility(weapon1.ActiveDuration + 0.05f);
-            weapon3.changeInvincibility(weapon3.ActiveDuration + 0.05f);
+            weapon1.changeInvincibility(weapon1.ActiveDuration );
+            weapon2.changeInvincibility(weapon1.ActiveDuration);
+            weapon3.changeInvincibility(weapon3.ActiveDuration );
 
             ani.SetFloat("attackSpeed", ani.GetFloat("attackSpeed") / attSpd);
         }
@@ -64,12 +64,6 @@ namespace MoreMountains.CorgiEngine
         // Update is called once per frame
         void Update()
         {
-            if (speed == 10&& DataBaseManager.changeNomalAttack == true)
-            {
-                DataBaseManager.changeNomalAttack = false;
-                faster();
-
-            }
 
 
 
@@ -87,13 +81,13 @@ namespace MoreMountains.CorgiEngine
                 weapon2.TimeBetweenUses = 0.5f * attSpd;
                 weapon3.TimeBetweenUses = 0.5f * attSpd;
 
-                weapon1.ActiveDuration = 0.4f * attSpd;
-                weapon2.ActiveDuration = 0.5f * attSpd;
-                weapon3.ActiveDuration = 0.5f * attSpd;
+                weapon1.ActiveDuration = 0.37f * attSpd;
+                weapon2.ActiveDuration = 0.47f * attSpd;
+                weapon3.ActiveDuration = 0.47f * attSpd;
 
-                weapon1.changeInvincibility(weapon1.ActiveDuration + 0.05f);
-                weapon2.changeInvincibility(weapon1.ActiveDuration + 0.05f);
-                weapon3.changeInvincibility(weapon3.ActiveDuration + 0.05f);
+                weapon1.changeInvincibility(weapon1.ActiveDuration );
+                weapon2.changeInvincibility(weapon1.ActiveDuration );
+                weapon3.changeInvincibility(weapon3.ActiveDuration);
                 ani.SetFloat("attackSpeed", ani.GetFloat("attackSpeed") / attSpd);
             }
 
@@ -107,9 +101,10 @@ namespace MoreMountains.CorgiEngine
             weapon2.TimeBetweenUses = 0.5f;
             weapon3.TimeBetweenUses = 0.5f;
 
-            weapon1.ActiveDuration = 0.4f;
-            weapon2.ActiveDuration = 0.5f;
-            weapon3.ActiveDuration = 0.5f;
+
+            weapon1.ActiveDuration = 0.37f;
+            weapon2.ActiveDuration = 0.47f;
+            weapon3.ActiveDuration = 0.47f;
 
 
             weapon1.InvincibilityDuration = weapon1.ActiveDuration;

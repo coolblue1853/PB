@@ -57,7 +57,7 @@ MonoBehaviour:
   DelayBeforeUseReleaseInterruption: 1
   TimeBetweenUses: 0.3
   TimeBetweenUsesReleaseInterruption: 0
-  Interruptable: 0
+  Interruptable: 1
   InitializeOnStart: 0
   usingStemina: 200
   MagazineBased: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
     m_Bits: 268443904
   DamageCaused: 10
   Knockback: 1
-  KnockbackForce: {x: 0, y: 8}
+  KnockbackForce: {x: 0, y: 6}
   InvincibilityDuration: 0.04
   stunzone: {fileID: 0}
 --- !u!114 &114246937138071502
@@ -173,7 +173,7 @@ MonoBehaviour:
   DelayBeforeUseReleaseInterruption: 1
   TimeBetweenUses: 0.3
   TimeBetweenUsesReleaseInterruption: 0
-  Interruptable: 0
+  Interruptable: 1
   InitializeOnStart: 0
   usingStemina: 100
   MagazineBased: 0
@@ -268,7 +268,7 @@ MonoBehaviour:
     m_Bits: 8448
   DamageCaused: 10
   Knockback: 1
-  KnockbackForce: {x: 0, y: 8}
+  KnockbackForce: {x: 0, y: 6}
   InvincibilityDuration: 0.05
   stunzone: {fileID: 0}
 --- !u!114 &114032460549813266
@@ -289,7 +289,7 @@ MonoBehaviour:
   DelayBeforeUseReleaseInterruption: 1
   TimeBetweenUses: 0.6
   TimeBetweenUsesReleaseInterruption: 0
-  Interruptable: 0
+  Interruptable: 1
   InitializeOnStart: 0
   usingStemina: 300
   MagazineBased: 0
@@ -384,7 +384,7 @@ MonoBehaviour:
     m_Bits: 8448
   DamageCaused: 10
   Knockback: 1
-  KnockbackForce: {x: 0, y: 8}
+  KnockbackForce: {x: 0, y: 6}
   InvincibilityDuration: 0.05
   stunzone: {fileID: 0}
 --- !u!114 &114169761508843964
@@ -417,38 +417,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a29c6f2bba346ac448966f5d40cfef18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 0
-  InitialHealth: 10
-  MaximumHealth: 10
-  Invulnerable: 0
-  TemporarilyInvulnerable: 0
-  PostDamageInvulnerable: 0
-  ImmuneToDamage: 0
-  DamageFeedbacks: {fileID: 0}
-  FeedbackIsProportionalToDamage: 0
-  FlickerSpriteOnHit: 1
-  FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
-  ImmuneToKnockback: 0
-  ImmuneToKnockbackIfZeroDamage: 0
-  DeathFeedbacks: {fileID: 0}
-  DestroyOnDeath: 1
-  DelayBeforeDestruction: 0
-  CollisionsOffOnDeath: 1
-  GravityOffOnDeath: 0
-  PointsWhenDestroyed: 0
-  RespawnAtInitialLocation: 0
-  ApplyDeathForce: 1
-  DeathForce: {x: 0, y: 10}
-  ResetForcesOnDeath: 0
-  ResetColorOnRevive: 1
-  ColorMaterialPropertyName: _Color
-  UseMaterialPropertyBlocks: 0
-  MasterHealth: {fileID: 0}
-  TargetDamageResistanceProcessor: {fileID: 0}
   weapon1: {fileID: 114066937058401760}
   weapon2: {fileID: 114246937138071502}
   weapon3: {fileID: 114032460549813266}
   ani: {fileID: 0}
+  nowSpeed: 
 --- !u!1 &263493511036029803
 GameObject:
   m_ObjectHideFlags: 0

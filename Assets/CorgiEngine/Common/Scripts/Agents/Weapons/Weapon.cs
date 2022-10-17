@@ -479,6 +479,7 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		public virtual void WeaponInputStart()
 		{
+
 			if (_reloading)
 			{
 				return;

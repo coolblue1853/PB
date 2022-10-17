@@ -34,7 +34,7 @@ namespace MoreMountains.CorgiEngine
 	/// and what happens when it dies.
 	/// </summary>
 	[AddComponentMenu("Corgi Engine/Character/Core/Health")]
-	public class Health : MonoBehaviour
+	public class Health : CharacterAbility
 	{
 		/// the current health of the character
 		[MMReadOnly]
@@ -370,7 +370,7 @@ namespace MoreMountains.CorgiEngine
 			}
 
 			// if the object is invulnerable, we do nothing and exit
-			if (TemporarilyInvulnerable || Invulnerable || ImmuneToDamage || PostDamageInvulnerable)
+			if (TemporarilyInvulnerable || Invulnerable || ImmuneToDamage || PostDamageInvulnerable && canIntrupted == true)
 			{
 				OnHitZero?.Invoke();
 				return;
@@ -396,9 +396,12 @@ namespace MoreMountains.CorgiEngine
 				CurrentHealth = 0;
 			}
 
+
+			// 여기에 캔 인터럽티드를 false 시켜줘야 캔슬공격이 가능합니다!
 			// we prevent the character from colliding with Projectiles, Player and Enemies
-			if (invincibilityDuration > 0)
+			if (invincibilityDuration > 0 && canIntrupted == true)
 			{
+
 				EnablePostDamageInvulnerability();
 				StartCoroutine(DisablePostDamageInvulnerability(invincibilityDuration));
 			}
@@ -432,7 +435,7 @@ namespace MoreMountains.CorgiEngine
 
 			// we update the health bar
 			UpdateHealthBar(true);
-
+			canIntrupted = true;
 
 			// we process any condition state change
 			ComputeCharacterConditionStateChanges(typedDamages);

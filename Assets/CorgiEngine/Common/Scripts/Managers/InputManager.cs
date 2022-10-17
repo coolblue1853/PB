@@ -116,8 +116,13 @@ namespace MoreMountains.CorgiEngine
 		public MMInput.IMButton ThrowButton { get; protected set; }
 		/// the shoot button
 		public MMInput.IMButton ShootButton { get; protected set; }
+
+
+		//스킬버튼 추가
+		public MMInput.IMButton Skill1Button { get; protected set; }
+
 		/// the shoot button
-		//public MMInput.IMButton Skill1Button { get; protected set; }
+
 		/// the shoot button
 		public MMInput.IMButton SecondaryShootButton { get; protected set; }
 		/// the reload button
@@ -220,7 +225,8 @@ namespace MoreMountains.CorgiEngine
 			ButtonList.Add(RollButton = new MMInput.IMButton(PlayerID, "Roll", RollButtonDown, RollButtonPressed, RollButtonUp));
 			ButtonList.Add(FlyButton = new MMInput.IMButton(PlayerID, "Fly", FlyButtonDown, FlyButtonPressed, FlyButtonUp));
 			ButtonList.Add(ShootButton = new MMInput.IMButton(PlayerID, "Shoot", ShootButtonDown, ShootButtonPressed, ShootButtonUp));
-			//ButtonList.Add(Skill1Button = new MMInput.IMButton(PlayerID, "skill1", ShootButtonDown, ShootButtonPressed, ShootButtonUp));
+
+			ButtonList.Add(Skill1Button = new MMInput.IMButton(PlayerID, "Skill1", Skill1Down, Skill1Pressed, Skill1Up));
 			ButtonList.Add(SecondaryShootButton = new MMInput.IMButton(PlayerID, "SecondaryShoot", SecondaryShootButtonDown, SecondaryShootButtonPressed, SecondaryShootButtonUp));
 			ButtonList.Add(ReloadButton = new MMInput.IMButton (PlayerID, "Reload", ReloadButtonDown, ReloadButtonPressed, ReloadButtonUp));
 			ButtonList.Add(SwitchWeaponButton = new MMInput.IMButton (PlayerID, "SwitchWeapon", SwitchWeaponButtonDown, SwitchWeaponButtonPressed, SwitchWeaponButtonUp));
@@ -531,9 +537,13 @@ namespace MoreMountains.CorgiEngine
 		public virtual void PushButtonPressed()             { PushButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
 		public virtual void PushButtonUp()                  { PushButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
 
-		public virtual void ShootButtonDown()               { ShootButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
+		public virtual void ShootButtonDown()               { ShootButton.State.ChangeState(MMInput.ButtonStates.ButtonDown);  }
 		public virtual void ShootButtonPressed()            { ShootButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
 		public virtual void ShootButtonUp()                 { ShootButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
+
+		public virtual void Skill1Down() { Skill1Button.State.ChangeState(MMInput.ButtonStates.ButtonDown);  }
+		public virtual void Skill1Pressed() { Skill1Button.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
+		public virtual void Skill1Up() { Skill1Button.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
 
 
 		public virtual void GripButtonDown()               { GripButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }

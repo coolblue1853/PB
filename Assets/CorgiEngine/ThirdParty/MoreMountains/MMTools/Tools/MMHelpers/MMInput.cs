@@ -97,6 +97,7 @@ namespace MoreMountains.Tools
 
 			public virtual void TriggerButtonDown()
 			{
+
 				_lastButtonDownAt = Time.unscaledTime;
 				if (ButtonDownMethod == null)
 				{

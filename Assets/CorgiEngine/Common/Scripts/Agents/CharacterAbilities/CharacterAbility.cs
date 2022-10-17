@@ -94,6 +94,7 @@ namespace MoreMountains.CorgiEngine
 		public static float nowStemina;
 		public static float fullStemina;
 		public static bool isRestOneSec;
+		public static bool canIntrupted = true;
 
 		public static float dashSt = 150f;
 

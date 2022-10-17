@@ -12,15 +12,15 @@ namespace MoreMountains.CorgiEngine
 	/// <summary>
 	/// A basic melee weapon class, that will activate a "hurt zone" when the weapon is used
 	/// </summary>
-	[AddComponentMenu("Corgi Engine/Weapons/Melee Weapon")]
-	public class MeleeWeapon : Weapon
+	[AddComponentMenu("Corgi Engine/Weapons/RisingCut")]
+	public class RisingCut : Weapon
 	{
 
 		public CorgiController controller;
 
 		private void Start()
 		{
-			controller = GameObject.Find("RetroCorgi").GetComponent<CorgiController>();
+			//controller = GameObject.Find("RetroCorgi").GetComponent<CorgiController>();
 
 		}
 
@@ -42,10 +42,10 @@ namespace MoreMountains.CorgiEngine
 		public MeleeDamageAreaShapes DamageAreaShape = MeleeDamageAreaShapes.Rectangle;
 		/// the size of the damage area
 		[Tooltip("the size of the damage area")]
-		public Vector2 AreaSize = new Vector2(1,1);
+		public Vector2 AreaSize = new Vector2(1, 1);
 		/// the offset to apply to the damage area (from the weapon's attachment position
 		[Tooltip("the offset to apply to the damage area (from the weapon's attachment position")]
-		public Vector2 AreaOffset = new Vector2(1,0);
+		public Vector2 AreaOffset = new Vector2(1, 0);
 
 		[MMInspectorGroup("Melee Damage Area Timing", true, 70)]
 
@@ -69,7 +69,7 @@ namespace MoreMountains.CorgiEngine
 		public DamageOnTouch.KnockbackStyles Knockback;
 		/// The force to apply to the object that gets damaged
 		[Tooltip("The force to apply to the object that gets damaged")]
-		public Vector2 KnockbackForce = new Vector2(10,2);
+		public Vector2 KnockbackForce = new Vector2(10, 2);
 		/// The duration of the invincibility frames after the hit (in seconds)
 		[Tooltip("The duration of the invincibility frames after the hit (in seconds)")]
 		public float InvincibilityDuration = 0.5f;
@@ -85,7 +85,7 @@ namespace MoreMountains.CorgiEngine
 		protected Vector3 _gizmoOffset;
 		protected DamageOnTouch _damageOnTouch;
 		protected GameObject _damageArea;
-        
+
 		protected bool _hitEventSent = false;
 		protected bool _hitDamageableEventSent = false;
 		protected bool _hitNonDamageableEventSent = false;
@@ -107,7 +107,7 @@ namespace MoreMountains.CorgiEngine
 				DisableDamageArea();
 				RegisterEvents();
 			}
-			_damageOnTouch.Owner = Owner.gameObject;
+			//_damageOnTouch.Owner = Owner.gameObject;
 		}
 
 		/// <summary>
@@ -116,7 +116,7 @@ namespace MoreMountains.CorgiEngine
 		protected virtual void CreateDamageArea()
 		{
 			_damageArea = new GameObject();
-			_damageArea.name = this.name+"DamageArea";
+			_damageArea.name = this.name + "DamageArea";
 			_damageArea.transform.position = this.transform.position;
 			_damageArea.transform.rotation = this.transform.rotation;
 			_damageArea.transform.SetParent(this.transform);
@@ -132,12 +132,12 @@ namespace MoreMountains.CorgiEngine
 			{
 				_circleCollider2D = _damageArea.AddComponent<CircleCollider2D>();
 				_circleCollider2D.transform.position = this.transform.position + this.transform.rotation * AreaOffset;
-				_circleCollider2D.radius = AreaSize.x/2;
+				_circleCollider2D.radius = AreaSize.x / 2;
 				_damageAreaCollider = _circleCollider2D;
 			}
 			_damageAreaCollider.isTrigger = true;
 
-			Rigidbody2D rigidBody = _damageArea.AddComponent<Rigidbody2D> ();
+			Rigidbody2D rigidBody = _damageArea.AddComponent<Rigidbody2D>();
 			rigidBody.isKinematic = true;
 
 			_damageOnTouch = _damageArea.AddComponent<DamageOnTouch>();
@@ -147,10 +147,10 @@ namespace MoreMountains.CorgiEngine
 			_damageOnTouch.DamageCausedKnockbackForce = KnockbackForce;
 			_damageOnTouch.InvincibilityDuration = InvincibilityDuration;
 		}
-		
+
 
 		public void changeInvincibility(float input)
-        {
+		{
 			_damageOnTouch.InvincibilityDuration = input;
 
 
@@ -164,7 +164,7 @@ namespace MoreMountains.CorgiEngine
 
 			base.WeaponUse();
 			_meleeWeaponAttack = StartCoroutine(MeleeWeaponAttack());
-			
+
 
 
 		}
@@ -175,21 +175,11 @@ namespace MoreMountains.CorgiEngine
 		/// <returns>The weapon attack.</returns>
 		public virtual IEnumerator MeleeWeaponAttack()
 		{
-		
+
 			if (_attackInProgress) { yield break; }
 
 
-			if(controller != null)
-            {
-				if (Input.GetKey(KeyCode.RightArrow))
-				{
-					controller.AddHorizontalForce(50);
-				}
-				if (Input.GetKey(KeyCode.LeftArrow))
-				{
-					controller.AddHorizontalForce(-50);
-				}
-			}
+
 
 			stunZone.SetActive(true);
 			_attackInProgress = true;
@@ -222,7 +212,7 @@ namespace MoreMountains.CorgiEngine
 		{
 			if (!_hitEventSent)
 			{
-				WeaponMiss();	
+				WeaponMiss();
 			}
 		}
 
@@ -262,7 +252,7 @@ namespace MoreMountains.CorgiEngine
 				DrawGizmos();
 			}
 		}
-        
+
 		/// <summary>
 		/// When we get a hit, we trigger one on the main class
 		/// </summary>
@@ -274,7 +264,7 @@ namespace MoreMountains.CorgiEngine
 				_hitEventSent = true;
 			}
 		}
-		
+
 		/// <summary>
 		/// When we get a HitDamageable, we trigger one on the main class
 		/// </summary>
@@ -286,7 +276,7 @@ namespace MoreMountains.CorgiEngine
 				_hitDamageableEventSent = true;
 			}
 		}
-		
+
 		/// <summary>
 		/// When we get a HitNonDamageable, we trigger one on the main class
 		/// </summary>
@@ -298,7 +288,7 @@ namespace MoreMountains.CorgiEngine
 				_hitNonDamageableEventSent = true;
 			}
 		}
-		
+
 		/// <summary>
 		/// When we get a Kill, we trigger one on the main class
 		/// </summary>
@@ -325,7 +315,7 @@ namespace MoreMountains.CorgiEngine
 				_eventsRegistered = true;
 			}
 		}
-        
+
 		/// <summary>
 		/// On TurnWeaponOff we stop our coroutine and damage area if needed
 		/// </summary>
@@ -338,7 +328,7 @@ namespace MoreMountains.CorgiEngine
 			}
 			if (_meleeWeaponAttack != null)
 			{
-				StopCoroutine(_meleeWeaponAttack);    
+				StopCoroutine(_meleeWeaponAttack);
 			}
 			DisableDamageArea();
 			_attackInProgress = false;
