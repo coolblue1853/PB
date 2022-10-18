@@ -43,7 +43,8 @@ namespace MoreMountains.CorgiEngine
 		public enum TriggerModes { SemiAuto, Auto }
 		/// the possible states the weapon can be in
 		public enum WeaponStates { WeaponIdle, WeaponStart, WeaponDelayBeforeUse, WeaponUse, WeaponDelayBetweenUses, WeaponStop, WeaponReloadNeeded, WeaponReloadStart, WeaponReload, WeaponReloadStop, WeaponInterrupted }
-
+		public static bool once = false;
+		public static bool once_S = false;
 		[MMInspectorGroup("General Settings", true, 12)]
 		/// is this weapon on semi or full auto ?
 		/// 

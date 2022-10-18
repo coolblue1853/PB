@@ -152,7 +152,7 @@ MonoBehaviour:
     m_Bits: 268443904
   DamageCaused: 10
   Knockback: 1
-  KnockbackForce: {x: 0, y: 6}
+  KnockbackForce: {x: 0, y: 5}
   InvincibilityDuration: 0.04
   stunzone: {fileID: 0}
 --- !u!114 &114246937138071502
@@ -268,7 +268,7 @@ MonoBehaviour:
     m_Bits: 8448
   DamageCaused: 10
   Knockback: 1
-  KnockbackForce: {x: 0, y: 6}
+  KnockbackForce: {x: 0, y: 5}
   InvincibilityDuration: 0.05
   stunzone: {fileID: 0}
 --- !u!114 &114032460549813266
@@ -384,7 +384,7 @@ MonoBehaviour:
     m_Bits: 8448
   DamageCaused: 10
   Knockback: 1
-  KnockbackForce: {x: 0, y: 6}
+  KnockbackForce: {x: 0, y: 5}
   InvincibilityDuration: 0.05
   stunzone: {fileID: 0}
 --- !u!114 &114169761508843964

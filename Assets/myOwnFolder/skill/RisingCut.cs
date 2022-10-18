@@ -107,7 +107,7 @@ namespace MoreMountains.CorgiEngine
 				DisableDamageArea();
 				RegisterEvents();
 			}
-			//_damageOnTouch.Owner = Owner.gameObject;
+			_damageOnTouch.Owner = this.gameObject;
 		}
 
 		/// <summary>
@@ -165,7 +165,7 @@ namespace MoreMountains.CorgiEngine
 			base.WeaponUse();
 			_meleeWeaponAttack = StartCoroutine(MeleeWeaponAttack());
 
-
+		
 
 		}
 
@@ -179,12 +179,13 @@ namespace MoreMountains.CorgiEngine
 			if (_attackInProgress) { yield break; }
 
 
-
+			once = true;
 
 			stunZone.SetActive(true);
 			_attackInProgress = true;
 			yield return new WaitForSeconds(InitialDelay);
 			EnableDamageArea();
+
 			yield return MMCoroutine.WaitForFrames(1);
 			HandleMiss();
 			yield return new WaitForSeconds(ActiveDuration);
@@ -221,6 +222,7 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		protected virtual void DisableDamageArea()
 		{
+			Weapon.once = false;
 			_damageAreaCollider.enabled = false;
 		}
 
@@ -230,7 +232,7 @@ namespace MoreMountains.CorgiEngine
 		protected virtual void DrawGizmos()
 		{
 			_gizmoOffset = AreaOffset;
-
+			
 			Gizmos.color = Color.red;
 			if (DamageAreaShape == MeleeDamageAreaShapes.Circle)
 			{

@@ -57,6 +57,7 @@ namespace MoreMountains.CorgiEngine
 		[Tooltip("if this is true, this object can't take damage")]
 		public bool Invulnerable = false;
 
+		public bool once = false;
 		/// If this is true, this object can't take damage at the moment
 		[MMReadOnly]
 		[Tooltip("If this is true, this object can't take damage at the moment")]
@@ -363,6 +364,7 @@ namespace MoreMountains.CorgiEngine
 		public virtual void Damage(float damage, GameObject instigator, float flickerDuration,
 			float invincibilityDuration, Vector3 damageDirection, List<TypedDamage> typedDamages = null)
 		{
+	
 			if (damage <= 0)
 			{
 				OnHitZero?.Invoke();
@@ -417,6 +419,7 @@ namespace MoreMountains.CorgiEngine
 			// we play the damage feedback
 			if (FeedbackIsProportionalToDamage)
 			{
+
 				DamageFeedbacks?.PlayFeedbacks(this.transform.position, damage);
 			}
 			else

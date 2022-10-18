@@ -5055,6 +5055,7 @@ MonoBehaviour:
   InitialHealth: 100
   MaximumHealth: 100
   Invulnerable: 0
+  once: 0
   TemporarilyInvulnerable: 0
   PostDamageInvulnerable: 0
   ImmuneToDamage: 0
@@ -5425,6 +5426,7 @@ MonoBehaviour:
   BlockingConditionStates: 
   InitialWeapon: {fileID: 114066937058401760, guid: 804a6978904b4ac4e9adc187c6fa72be,
     type: 3}
+  skill_One: {fileID: 0}
   CanPickupWeapons: 1
   WeaponAttachment: {fileID: 0}
   ForceWeaponScaleResetOnEquip: 0

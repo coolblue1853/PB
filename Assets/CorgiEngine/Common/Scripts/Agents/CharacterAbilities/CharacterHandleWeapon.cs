@@ -21,6 +21,8 @@ namespace MoreMountains.CorgiEngine
 		/// the initial weapon owned by the character
 		[Tooltip("the initial weapon owned by the character")]
 		public Weapon InitialWeapon;
+		[Tooltip("Player's Skill")]
+		public Weapon skill_One;
 		/// if this is set to true, the character can pick up PickableWeapons
 		[Tooltip("if this is set to true, the character can pick up PickableWeapons")]
 		public bool CanPickupWeapons = true;
@@ -197,12 +199,8 @@ namespace MoreMountains.CorgiEngine
 				_character.Flip();
 			}
 		}
-
-		/// <summary>
-		/// Gets input and triggers methods based on what's been pressed
-		/// </summary>
-		protected override void HandleInput ()
-		{			
+		protected override void HandleInput()
+		{
 
 			if ((_inputManager.ShootButton.State.CurrentState == MMInput.ButtonStates.ButtonDown) || (_inputManager.ShootAxis == MMInput.ButtonStates.ButtonDown))
 			{
@@ -219,7 +217,7 @@ namespace MoreMountains.CorgiEngine
 				{
 					ShootStart();
 				}
-			}			
+			}
 
 			if (_inputManager.ReloadButton.State.CurrentState == MMInput.ButtonStates.ButtonDown)
 			{
@@ -234,12 +232,16 @@ namespace MoreMountains.CorgiEngine
 			if (CurrentWeapon != null)
 			{
 				if ((CurrentWeapon.WeaponState.CurrentState == Weapon.WeaponStates.WeaponDelayBetweenUses)
-				    && ((_inputManager.ShootAxis == MMInput.ButtonStates.Off) && (_inputManager.ShootButton.State.CurrentState == MMInput.ButtonStates.Off)))
+					&& ((_inputManager.ShootAxis == MMInput.ButtonStates.Off) && (_inputManager.ShootButton.State.CurrentState == MMInput.ButtonStates.Off)))
 				{
 					CurrentWeapon.WeaponInputStop();
 				}
-			}            
+			}
 		}
+		/// <summary>
+		/// Gets input and triggers methods based on what's been pressed
+		/// </summary>
+
 
 		/// <summary>
 		/// Triggers an attack if the weapon is idle and an input has been buffered

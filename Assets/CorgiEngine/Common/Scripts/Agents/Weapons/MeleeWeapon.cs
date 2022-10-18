@@ -107,6 +107,7 @@ namespace MoreMountains.CorgiEngine
 				DisableDamageArea();
 				RegisterEvents();
 			}
+		
 			_damageOnTouch.Owner = Owner.gameObject;
 		}
 
@@ -139,7 +140,7 @@ namespace MoreMountains.CorgiEngine
 
 			Rigidbody2D rigidBody = _damageArea.AddComponent<Rigidbody2D> ();
 			rigidBody.isKinematic = true;
-
+			
 			_damageOnTouch = _damageArea.AddComponent<DamageOnTouch>();
 			_damageOnTouch.TargetLayerMask = TargetLayerMask;
 			_damageOnTouch.MinDamageCaused = DamageCaused;
@@ -183,13 +184,14 @@ namespace MoreMountains.CorgiEngine
             {
 				if (Input.GetKey(KeyCode.RightArrow))
 				{
-					controller.AddHorizontalForce(50);
+					controller.AddHorizontalForce(25);
 				}
 				if (Input.GetKey(KeyCode.LeftArrow))
 				{
-					controller.AddHorizontalForce(-50);
+					controller.AddHorizontalForce(-25);
 				}
 			}
+
 
 			stunZone.SetActive(true);
 			_attackInProgress = true;

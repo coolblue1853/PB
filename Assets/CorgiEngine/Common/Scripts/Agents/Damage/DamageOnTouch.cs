@@ -12,7 +12,7 @@ namespace MoreMountains.CorgiEngine
 	/// Add this component to an object and it will cause damage to objects that collide with it. 
 	/// </summary>
 	[AddComponentMenu("Corgi Engine/Character/Damage/DamageOnTouch")] 
-	public class DamageOnTouch : MonoBehaviour 
+	public class DamageOnTouch : Weapon 
 	{
 		/// the possible ways to add knockback : noKnockback, which won't do nothing, set force, or add force
 		public enum KnockbackStyles { NoKnockback, SetForce, AddForce }
@@ -330,9 +330,10 @@ namespace MoreMountains.CorgiEngine
 			_colliderCorgiController = health.gameObject.MMGetComponentNoAlloc<CorgiController>();
 
 			float randomDamage = UnityEngine.Random.Range(MinDamageCaused, Mathf.Max(MaxDamageCaused, MinDamageCaused));
-			
+
+
+	
 			ApplyDamageCausedKnockback(randomDamage, TypedDamages);
-			
 			OnHitDamageable?.Invoke();
 
 			HitDamageableFeedback?.PlayFeedbacks(this.transform.position);
@@ -359,14 +360,22 @@ namespace MoreMountains.CorgiEngine
 			
 			SelfDamage(DamageTakenEveryTime + DamageTakenDamageable);
 		}
-
+		
 		protected virtual void ApplyDamageCausedKnockback(float damage, List<TypedDamage> typedDamages)
 		{
+
+
 			if (!ShouldApplyKnockback(damage, typedDamages))
 			{
+
 				return;
+
+
 			}
-			
+
+
+
+
 			_knockbackForce.x = DamageCausedKnockbackForce.x;
 			if (DamageCausedKnockbackDirection == CausedKnockbackDirections.BasedOnSpeed)
 			{
@@ -379,20 +388,24 @@ namespace MoreMountains.CorgiEngine
 				Vector2 relativePosition = _colliderCorgiController.transform.position - Owner.transform.position;
 				_knockbackForce.x *= Mathf.Sign(relativePosition.x);
 			}
-			
-			_knockbackForce.y = DamageCausedKnockbackForce.y;	
+
+			_knockbackForce.y = DamageCausedKnockbackForce.y;
 
 			if (DamageCausedKnockbackType == KnockbackStyles.SetForce)
 			{
-				_colliderCorgiController.SetForce(_knockbackForce);	
+				_colliderCorgiController.SetForce(_knockbackForce);
 			}
 			if (DamageCausedKnockbackType == KnockbackStyles.AddForce)
 			{
-				_colliderCorgiController.AddForce(_knockbackForce);	
+
+				_colliderCorgiController.AddForce(_knockbackForce);
 			}
-			
+
+
+
+
 		}
-		
+
 		/// <summary>
 		/// Determines whether or not knockback should be applied
 		/// </summary>
@@ -406,12 +419,13 @@ namespace MoreMountains.CorgiEngine
 					return false;
 				}
 			}
-			
+
 			return (_colliderCorgiController != null)
-			       && (DamageCausedKnockbackForce != Vector2.zero)
-			       && !_colliderHealth.Invulnerable
-			       && !_colliderHealth.PostDamageInvulnerable
-			       && !_colliderHealth.ImmuneToKnockback;
+				   && (DamageCausedKnockbackForce != Vector2.zero)
+				   && !_colliderHealth.Invulnerable
+				   && (!_colliderHealth.PostDamageInvulnerable ||once)
+				   && !_colliderHealth.ImmuneToKnockback;
+
 		}
 	    
 		protected virtual void ApplyDamageTakenKnockback()
