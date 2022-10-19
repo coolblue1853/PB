@@ -152,7 +152,7 @@ MonoBehaviour:
     m_Bits: 268443904
   DamageCaused: 10
   Knockback: 1
-  KnockbackForce: {x: 0, y: 5}
+  KnockbackForce: {x: 0, y: 3}
   InvincibilityDuration: 0.04
   stunzone: {fileID: 0}
 --- !u!114 &114246937138071502
@@ -268,7 +268,7 @@ MonoBehaviour:
     m_Bits: 8448
   DamageCaused: 10
   Knockback: 1
-  KnockbackForce: {x: 0, y: 5}
+  KnockbackForce: {x: 0, y: 3}
   InvincibilityDuration: 0.05
   stunzone: {fileID: 0}
 --- !u!114 &114032460549813266
@@ -384,7 +384,7 @@ MonoBehaviour:
     m_Bits: 8448
   DamageCaused: 10
   Knockback: 1
-  KnockbackForce: {x: 0, y: 5}
+  KnockbackForce: {x: 0, y: 4}
   InvincibilityDuration: 0.05
   stunzone: {fileID: 0}
 --- !u!114 &114169761508843964
@@ -2095,7 +2095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5544367883001646811
 Transform:
   m_ObjectHideFlags: 0
@@ -2143,7 +2143,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.2815037, y: 0.6623502}
+  m_Offset: {x: 1.4430714, y: 0.06215024}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2154,5 +2154,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.5630074, y: 2.3247004}
+  m_Size: {x: 3.2308311, y: 1.3739429}
   m_EdgeRadius: 0

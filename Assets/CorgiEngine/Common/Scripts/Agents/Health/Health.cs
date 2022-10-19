@@ -180,17 +180,17 @@ namespace MoreMountains.CorgiEngine
 		public OnHitZeroDelegate OnHitZero;
 		public OnReviveDelegate OnRevive;
 
-		protected CharacterHorizontalMovement _characterHorizontalMovement;
+		//protected CharacterHorizontalMovement _characterHorizontalMovement;
 		protected Vector3 _initialPosition;
 		protected Color _initialColor;
 		protected Renderer _renderer;
-		protected Character _character;
-		protected CorgiController _controller;
+		//protected Character _character;
+		//protected CorgiController _controller;
 		protected MMHealthBar _healthBar;
 		protected Collider2D _collider2D;
 		protected bool _initialized = false;
 		protected AutoRespawn _autoRespawn;
-		protected Animator _animator;
+		//protected Animator _animator;
 		protected CharacterPersistence _characterPersistence = null;
 		protected MaterialPropertyBlock _propertyBlock;
 		protected bool _hasColorProperty = false;

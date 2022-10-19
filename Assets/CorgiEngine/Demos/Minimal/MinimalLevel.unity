@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityStartFeedbacks: {fileID: 0}
   AbilityStopFeedbacks: {fileID: 0}
-  AbilityPermitted: 1
+  AbilityPermitted: 0
   BlockingMovementStates: 
   BlockingConditionStates: 
   StunButton: 0
@@ -810,17 +810,17 @@ PrefabInstance:
     - target: {fileID: 6827138762926177367, guid: 06fbdff59b6b4ce42a2ce477d7db655d,
         type: 3}
       propertyPath: InitialHealth
-      value: 1000
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 6827138762926177367, guid: 06fbdff59b6b4ce42a2ce477d7db655d,
         type: 3}
       propertyPath: MaximumHealth
-      value: 1000
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 6827138762926177369, guid: 06fbdff59b6b4ce42a2ce477d7db655d,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6827138762926177391, guid: 06fbdff59b6b4ce42a2ce477d7db655d,
         type: 3}
@@ -2062,6 +2062,7 @@ MonoBehaviour:
   InitialHealth: 1000
   MaximumHealth: 1000
   Invulnerable: 0
+  once: 0
   TemporarilyInvulnerable: 0
   PostDamageInvulnerable: 0
   ImmuneToDamage: 0

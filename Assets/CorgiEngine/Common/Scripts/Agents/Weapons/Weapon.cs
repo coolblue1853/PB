@@ -545,6 +545,7 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		public virtual void TurnWeaponOff()
 		{
+
 			if (_characterHorizontalMovementNotNull)
 			{
 				_characterHorizontalMovement.MovementSpeedMultiplier = _permanentMovementMultiplierStorage;
@@ -573,6 +574,7 @@ namespace MoreMountains.CorgiEngine
 			{
 				_applyForceWhileInUse = false;
 			}
+			
 		}
 
 		/// <summary>

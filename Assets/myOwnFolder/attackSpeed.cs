@@ -45,7 +45,7 @@ namespace MoreMountains.CorgiEngine
         public void faster()
         {
             restting();
-            attSpd = 5f;
+            attSpd = 10f;
             weapon1.TimeBetweenUses = 0.4f * attSpd;
             weapon2.TimeBetweenUses = 0.5f * attSpd;
             weapon3.TimeBetweenUses = 0.5f * attSpd;
