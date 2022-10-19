@@ -5847,6 +5847,7 @@ MonoBehaviour:
   NewInputExtendsBuffer: 0
   MaximumBufferDuration: 0.25
   CurrentWeapon: {fileID: 0}
+  one: 1
   main_animator: {fileID: 5257172717294899294}
 --- !u!1 &1693914667617252
 GameObject:
@@ -40251,6 +40252,7 @@ MonoBehaviour:
   DisableZoneOnStun: 1
   AutoDisable: 1
   AutoDisableDuration: 0.3
+  enemy: {fileID: 0}
 --- !u!61 &3397905353877495958
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55528,6 +55530,7 @@ MonoBehaviour:
   DisableZoneOnStun: 1
   AutoDisable: 1
   AutoDisableDuration: 0.3
+  enemy: {fileID: 0}
 --- !u!61 &5643837464651876396
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -81437,10 +81440,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   DamageCaused: 10
-  Knockback: 1
+  Knockback: 2
   KnockbackForce: {x: 0, y: 2}
   InvincibilityDuration: 0.5
   stunzone: {fileID: 0}
+  main_animator: {fileID: 5257172717294899294}
   Suking: {fileID: 0}
 --- !u!61 &6355107176699307249
 BoxCollider2D:

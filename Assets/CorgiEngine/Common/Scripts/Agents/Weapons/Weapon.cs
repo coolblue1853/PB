@@ -723,7 +723,7 @@ namespace MoreMountains.CorgiEngine
 		{
 			WeaponState.ChangeState(WeaponStates.WeaponIdle);
 		}
-
+		public static bool isSucking;
 		protected virtual void CaseWeaponReloadNeeded()
 		{
 			ReloadNeeded();

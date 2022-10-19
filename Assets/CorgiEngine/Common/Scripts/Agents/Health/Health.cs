@@ -166,6 +166,8 @@ namespace MoreMountains.CorgiEngine
 		[Tooltip("a DamageResistanceProcessor this Health will use to process damage when it's received")]
 		public DamageResistanceProcessor TargetDamageResistanceProcessor;
 
+
+
 		public float LastDamage { get; set; }
 		public Vector3 LastDamageDirection { get; set; }
 
@@ -199,7 +201,7 @@ namespace MoreMountains.CorgiEngine
 			public Coroutine DamageOverTimeCoroutine;
 			public DamageType DamageOverTimeType;
 		}
-
+	
 		protected List<InterruptiblesDamageOverTimeCoroutine> _interruptiblesDamageOverTimeCoroutines;
 
 		/// <summary>
@@ -207,6 +209,8 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		protected virtual void Start()
 		{
+
+
 			Initialization();
 			InitializeSpriteColor();
 		}
@@ -215,8 +219,7 @@ namespace MoreMountains.CorgiEngine
 		/// Grabs useful components, enables damage and gets the inital color
 		/// </summary>
 		protected virtual void Initialization()
-		{
-			_character = this.gameObject.GetComponent<Character>();
+		{			_character = this.gameObject.GetComponent<Character>();
 			_characterPersistence = this.gameObject.GetComponent<CharacterPersistence>();
 
 			if (this.gameObject.MMGetComponentNoAlloc<SpriteRenderer>() != null)
@@ -426,6 +429,9 @@ namespace MoreMountains.CorgiEngine
 			{
 				DamageFeedbacks?.PlayFeedbacks(this.transform.position);
 			}
+
+
+
 
 			if (FlickerSpriteOnHit)
 			{
@@ -705,7 +711,7 @@ namespace MoreMountains.CorgiEngine
 				_interruptiblesDamageOverTimeCoroutines.Add(damageOverTime);
 			}
 		}
-
+        
 		/// <summary>
 		/// A coroutine used to apply damage over time
 		/// </summary>

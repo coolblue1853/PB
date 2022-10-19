@@ -105,6 +105,7 @@ namespace MoreMountains.CorgiEngine
 		// Initialization
 		protected override void Initialization()
 		{
+			one = true;
 			base.Initialization();
 			if (_characterHorizontalMovement != null)
 			{
@@ -269,10 +270,15 @@ namespace MoreMountains.CorgiEngine
 		/// <summary>
 		/// Causes the character to start shooting
 		/// </summary>
+		/// 
+
+		public bool one = true;
 		public virtual void ShootStart()
 
 		{           // 여기에 추가해줘야 애니메이션 시작이 가능합니다!
-			main_animator.SetBool("wheel", true);
+
+
+
 
 			// if the Shoot action is enabled in the permissions, we continue, if not we do nothing.  If the player is dead we do nothing.
 			if (!AbilityAuthorized
@@ -302,8 +308,8 @@ namespace MoreMountains.CorgiEngine
 			PlayAbilityStartFeedbacks();
 			MMCharacterEvent.Trigger(_character, MMCharacterEventTypes.HandleWeapon, MMCharacterEvent.Moments.Start);
 			CurrentWeapon.WeaponInputStart();
-	
 
+	
 		}
 		
 		public Animator main_animator;
@@ -317,9 +323,10 @@ namespace MoreMountains.CorgiEngine
         /// </summary>
         public virtual void ShootStop()
 		{
+
 			// 여기에 추가해줘야 애니메이션 캔슬이 가능합니다!
 			main_animator.SetBool("wheel", false);
-
+			one = true;
 			// if the Shoot action is enabled in the permissions, we continue, if not we do nothing
 			if (!AbilityAuthorized
 				|| (CurrentWeapon == null)

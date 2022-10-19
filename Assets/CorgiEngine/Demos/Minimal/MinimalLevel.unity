@@ -767,6 +767,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RetroBlobDash
       objectReference: {fileID: 0}
+    - target: {fileID: 6827138762926177345, guid: 06fbdff59b6b4ce42a2ce477d7db655d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6827138762926177360, guid: 06fbdff59b6b4ce42a2ce477d7db655d,
         type: 3}
       propertyPath: AutomaticGravitySettings
@@ -2282,7 +2287,7 @@ GameObject:
   - component: {fileID: 42671612161896804}
   m_Layer: 13
   m_Name: finding
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

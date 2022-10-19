@@ -350,6 +350,7 @@ namespace MoreMountains.CorgiEngine
 			}
 			else
 			{
+
 				_colliderHealth.Damage(randomDamage, gameObject, InvincibilityDuration, InvincibilityDuration, _damageDirection, TypedDamages);	
 			}
 

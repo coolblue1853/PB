@@ -15,9 +15,15 @@ namespace MoreMountains.CorgiEngine
 	[AddComponentMenu("Corgi Engine/Weapons/WheelWind")]
 	public class WheelWind : Weapon
 	{
+
 		public virtual void OnTriggerStay2D(Collider2D collider)
 		{
 
+			if (collider.tag == "Enemy")
+			{
+				enemy = collider.gameObject;
+
+			}
 		}
 
 		/// <summary>
@@ -114,6 +120,7 @@ namespace MoreMountains.CorgiEngine
 		public GameObject stunzone;
 		public override void Initialization()
 		{
+			
 			base.Initialization();
 			if (_damageArea == null)
 			{
@@ -162,7 +169,7 @@ namespace MoreMountains.CorgiEngine
 			_damageOnTouch.InvincibilityDuration = InvincibilityDuration;
 		}
 
-
+		public Animator main_animator;
 		public void changeInvincibility(float input)
 		{
 			_damageOnTouch.InvincibilityDuration = input;
@@ -183,17 +190,17 @@ namespace MoreMountains.CorgiEngine
 
 		}
 
-		public GameObject Suking;
+        public GameObject Suking;
 		/// <summary>
 		/// Triggers an attack, turning the damage area on and then off
 		/// </summary>
 		/// <returns>The weapon attack.</returns>
 		public virtual IEnumerator MeleeWeaponAttack()
 		{
+			main_animator.SetBool("once", true);
+			main_animator.SetBool("wheel", true);
 
 			if (_attackInProgress) { yield break; }
-
-
 
 
 			stunZone.SetActive(true);
@@ -202,8 +209,15 @@ namespace MoreMountains.CorgiEngine
 			EnableDamageArea();
 			yield return MMCoroutine.WaitForFrames(1);
 			HandleMiss();
+			if (main_animator.GetCurrentAnimatorStateInfo(0).IsName("corgi_wheelWind") == true)
+			{
+				main_animator.SetBool("once", false);
+			}
+
 
 			yield return new WaitForSeconds(ActiveDuration);
+
+
 			DisableDamageArea();
 			_attackInProgress = false;
 
@@ -237,6 +251,8 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		protected virtual void DisableDamageArea()
 		{
+			//여기에 추가해야 시간 지나면 꺼짐
+			main_animator.SetBool("wheel", false);
 			Weapon.once = false;
 			_damageAreaCollider.enabled = false;
 		}

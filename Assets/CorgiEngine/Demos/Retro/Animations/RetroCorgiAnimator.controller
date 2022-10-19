@@ -1192,6 +1192,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: once
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -2563,7 +2569,7 @@ AnimatorStateMachine:
     second:
     - {fileID: 4207318742079221461}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -160, y: 400, z: 0}
+  m_AnyStatePosition: {x: -580, y: 170, z: 0}
   m_EntryPosition: {x: 492, y: -204, z: 0}
   m_ExitPosition: {x: 492, y: -240, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
@@ -3218,10 +3224,13 @@ AnimatorStateTransition:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 
+  m_Name: wheel
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: wheel
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: once
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4158994747287741300}

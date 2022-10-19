@@ -51,7 +51,7 @@ namespace MoreMountains.CorgiEngine
 				StartCoroutine(AutoDisableCo());
 			}
 		}
-
+		
 		/// <summary>
 		/// A coroutine used to disable the zone after a certain duration
 		/// </summary>
@@ -81,9 +81,10 @@ namespace MoreMountains.CorgiEngine
 			{
 				return;
 			}
-            
+
 			if (StunMode == StunModes.ForDuration)
 			{
+
 				_characterStun.StunFor(StunDuration);
 			}
 			else
@@ -96,7 +97,7 @@ namespace MoreMountains.CorgiEngine
 				this.gameObject.SetActive(false);
 			}
 		}
-        
+		public GameObject enemy;
 		/// <summary>
 		/// When a collision with the player is triggered, we give damage to the player and knock it back
 		/// </summary>
@@ -104,6 +105,11 @@ namespace MoreMountains.CorgiEngine
 		public virtual void OnTriggerStay2D(Collider2D collider)
 		{
 			Colliding(collider.gameObject);
+			if (collider.tag == "Enemy")
+			{
+				enemy = collider.gameObject;
+
+			}
 		}
 
 		/// <summary>
