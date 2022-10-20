@@ -218,8 +218,16 @@ namespace MoreMountains.CorgiEngine
 		/// <summary>
 		/// Grabs useful components, enables damage and gets the inital color
 		/// </summary>
+		/// 
+		public CharacterStun characterStun;
 		protected virtual void Initialization()
-		{			_character = this.gameObject.GetComponent<Character>();
+		{
+			if(this.gameObject.GetComponent<CharacterStun>() != null)
+            {
+				characterStun = this.gameObject.GetComponent<CharacterStun>();
+			}
+	
+			_character = this.gameObject.GetComponent<Character>();
 			_characterPersistence = this.gameObject.GetComponent<CharacterPersistence>();
 
 			if (this.gameObject.MMGetComponentNoAlloc<SpriteRenderer>() != null)
@@ -410,6 +418,10 @@ namespace MoreMountains.CorgiEngine
 				EnablePostDamageInvulnerability();
 				StartCoroutine(DisablePostDamageInvulnerability(invincibilityDuration));
 			}
+
+
+			// 현재 상태에서는 맞으면 무조건 0.5초간 기절함. 여기를 수정해서 특정 스킬에 맞았을때만으로 수정해주어야 할듯.
+			characterStun.StunFor(0.8f);
 
 			// we trigger a damage taken event
 			MMDamageTakenEvent.Trigger(_character, instigator, CurrentHealth, damage, previousHealth);

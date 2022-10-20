@@ -202,7 +202,7 @@ namespace MoreMountains.CorgiEngine
 
 			if (_attackInProgress) { yield break; }
 
-
+			once = true;
 			stunZone.SetActive(true);
 			_attackInProgress = true;
 			yield return new WaitForSeconds(InitialDelay);
@@ -216,7 +216,7 @@ namespace MoreMountains.CorgiEngine
 
 
 			yield return new WaitForSeconds(ActiveDuration);
-
+			stunZone.SetActive(false);
 
 			DisableDamageArea();
 			_attackInProgress = false;

@@ -325,7 +325,13 @@ namespace MoreMountains.CorgiEngine
 		{
 
 			// 여기에 추가해줘야 애니메이션 캔슬이 가능합니다!
-			main_animator.SetBool("wheel", false);
+			if(CurrentWeapon.name == "Wheelwind")
+			{
+				main_animator.SetBool("wheel", false);
+				
+
+			}
+	
 			one = true;
 			// if the Shoot action is enabled in the permissions, we continue, if not we do nothing
 			if (!AbilityAuthorized
