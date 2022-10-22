@@ -101,10 +101,11 @@ namespace MoreMountains.CorgiEngine
 		protected bool _charHztlMvmtFlipInitialSetting;
 		protected bool _charHztlMvmtFlipInitialSettingSet = false;
 		protected Vector2 _invertedHorizontalAimMultiplier = new Vector2(-1f, 1f);
-
+		protected CorgiController _colliderCorgiController;
 		// Initialization
 		protected override void Initialization()
 		{
+
 			one = true;
 			base.Initialization();
 			if (_characterHorizontalMovement != null)
@@ -317,18 +318,20 @@ namespace MoreMountains.CorgiEngine
         {
 
         }
-
-        /// <summary>
-        /// Causes the character to stop shooting
-        /// </summary>
-        public virtual void ShootStop()
+		protected CharacterHandleWeapon moveStop;
+		/// <summary>
+		/// Causes the character to stop shooting
+		/// </summary>
+		public virtual void ShootStop()
 		{
 
 			// 여기에 추가해줘야 애니메이션 캔슬이 가능합니다!
-			if(CurrentWeapon.name == "Wheelwind")
+			if(CurrentWeapon.name == "wheelWind(Clone)")
 			{
 				main_animator.SetBool("wheel", false);
-				
+				moveStop = CurrentWeapon.GetComponent<CharacterHandleWeapon>();
+				moveStop.ShootStart();
+
 
 			}
 	

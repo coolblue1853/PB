@@ -35,7 +35,7 @@ namespace MoreMountains.CorgiEngine
 
 		}
 		public GameObject enemy;
-
+		protected CharacterHandleWeapon moveStop;
 		public CorgiController controller;
 
 		private void Start()
@@ -113,6 +113,7 @@ namespace MoreMountains.CorgiEngine
 		protected bool _eventsRegistered = false;
 		protected Coroutine _meleeWeaponAttack;
 
+
 		/// <summary>
 		/// Initialization
 		/// </summary>
@@ -120,7 +121,7 @@ namespace MoreMountains.CorgiEngine
 		public GameObject stunzone;
 		public override void Initialization()
 		{
-			
+			moveStop = this.GetComponent<CharacterHandleWeapon>();
 			base.Initialization();
 			if (_damageArea == null)
 			{
@@ -129,6 +130,7 @@ namespace MoreMountains.CorgiEngine
 				RegisterEvents();
 			}
 			_damageOnTouch.Owner = this.gameObject;
+
 		}
 
 		/// <summary>
@@ -197,9 +199,10 @@ namespace MoreMountains.CorgiEngine
 		/// <returns>The weapon attack.</returns>
 		public virtual IEnumerator MeleeWeaponAttack()
 		{
+
 			main_animator.SetBool("once", true);
 			main_animator.SetBool("wheel", true);
-
+			//once = true;
 			if (_attackInProgress) { yield break; }
 
 			once = true;
@@ -216,7 +219,7 @@ namespace MoreMountains.CorgiEngine
 
 
 			yield return new WaitForSeconds(ActiveDuration);
-			stunZone.SetActive(false);
+
 
 			DisableDamageArea();
 			_attackInProgress = false;
@@ -251,6 +254,9 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		protected virtual void DisableDamageArea()
 		{
+
+			moveStop.ShootStart();
+
 			//여기에 추가해야 시간 지나면 꺼짐
 			main_animator.SetBool("wheel", false);
 			Weapon.once = false;

@@ -2126,10 +2126,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   StunMode: 1
-  StunDuration: 1
+  StunDuration: 2
   DisableZoneOnStun: 1
   AutoDisable: 1
   AutoDisableDuration: 0.3
+  enemy: {fileID: 0}
 --- !u!61 &6574203634933056569
 BoxCollider2D:
   m_ObjectHideFlags: 0

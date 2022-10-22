@@ -421,7 +421,7 @@ namespace MoreMountains.CorgiEngine
 
 
 			// 현재 상태에서는 맞으면 무조건 0.5초간 기절함. 여기를 수정해서 특정 스킬에 맞았을때만으로 수정해주어야 할듯.
-			characterStun.StunFor(0.8f);
+			//characterStun.StunFor(2f);
 
 			// we trigger a damage taken event
 			MMDamageTakenEvent.Trigger(_character, instigator, CurrentHealth, damage, previousHealth);

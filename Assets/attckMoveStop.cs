@@ -12,8 +12,8 @@ namespace MoreMountains.CorgiEngine
 	/// <summary>
 	/// A basic melee weapon class, that will activate a "hurt zone" when the weapon is used
 	/// </summary>
-	[AddComponentMenu("Corgi Engine/Weapons/Melee Weapon")]
-	public class MeleeWeapon : Weapon
+	[AddComponentMenu("Corgi Engine/Weapons/attckMoveStop")]
+	public class attckMoveStop : Weapon
 	{
 
 		public CorgiController controller;
@@ -26,6 +26,7 @@ namespace MoreMountains.CorgiEngine
 
 		public void outsideUsingAttackSkill()
 		{
+
 			CreateDamageArea();
 			DisableDamageArea();
 			RegisterEvents();
@@ -108,7 +109,7 @@ namespace MoreMountains.CorgiEngine
 				RegisterEvents();
 			}
 
-			_damageOnTouch.Owner = Owner.gameObject;
+
 		}
 
 		/// <summary>
@@ -176,27 +177,17 @@ namespace MoreMountains.CorgiEngine
 		/// <returns>The weapon attack.</returns>
 		public virtual IEnumerator MeleeWeaponAttack()
 		{
+
 		
-			if (_attackInProgress) { yield break; }
 
 
-			if(controller != null)
-            {
-				if (Input.GetKey(KeyCode.RightArrow))
-				{
-					controller.AddHorizontalForce(25);
-				}
-				if (Input.GetKey(KeyCode.LeftArrow))
-				{
-					controller.AddHorizontalForce(-25);
-				}
-			}
 
 
-			stunZone.SetActive(true);
+
 			_attackInProgress = true;
 			yield return new WaitForSeconds(InitialDelay);
 			EnableDamageArea();
+
 			yield return MMCoroutine.WaitForFrames(1);
 			HandleMiss();
 			yield return new WaitForSeconds(ActiveDuration);
@@ -233,7 +224,9 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		protected virtual void DisableDamageArea()
 		{
+
 			_damageAreaCollider.enabled = false;
+			stunZone.SetActive(true);
 		}
 
 		/// <summary>
