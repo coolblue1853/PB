@@ -4829,6 +4829,7 @@ GameObject:
   - component: {fileID: 7480484913815595319}
   - component: {fileID: 3321665931724361174}
   - component: {fileID: 7398689224208441767}
+  - component: {fileID: 7851976378772138489}
   m_Layer: 9
   m_Name: RetroCorgi
   m_TagString: Player
@@ -5850,6 +5851,19 @@ MonoBehaviour:
   CurrentWeapon: {fileID: 0}
   one: 1
   main_animator: {fileID: 5257172717294899294}
+--- !u!114 &7851976378772138489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383539409296422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f7408e1d93e5bd429b28b5cb1b7e1ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ani: {fileID: 5257172717294899294}
 --- !u!1 &1693914667617252
 GameObject:
   m_ObjectHideFlags: 0
