@@ -186,7 +186,8 @@ namespace MoreMountains.CorgiEngine
 		{
 
 			base.WeaponUse();
-			_meleeWeaponAttack = StartCoroutine(MeleeWeaponAttack());
+			if (usingSkill == false)
+				_meleeWeaponAttack = StartCoroutine(MeleeWeaponAttack());
 
 		
 
@@ -204,7 +205,7 @@ namespace MoreMountains.CorgiEngine
 			main_animator.SetBool("wheel", true);
 			//once = true;
 			if (_attackInProgress) { yield break; }
-
+			usingSkill = true;
 			once = true;
 			stunZone.SetActive(true);
 			_attackInProgress = true;
@@ -256,7 +257,7 @@ namespace MoreMountains.CorgiEngine
 		{
 
 			moveStop.ShootStart();
-
+			usingSkill = false;
 			//여기에 추가해야 시간 지나면 꺼짐
 			main_animator.SetBool("wheel", false);
 			Weapon.once = false;

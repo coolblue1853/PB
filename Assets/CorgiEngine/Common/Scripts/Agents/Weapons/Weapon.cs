@@ -347,6 +347,9 @@ namespace MoreMountains.CorgiEngine
 		protected Vector2 _recoilDirection;
 		protected bool _characterHorizontalMovementNotNull = false;
 
+
+		public static bool usingSkill = false;
+
 		#region Initialization
 
 		protected virtual void Start()

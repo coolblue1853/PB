@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using MoreMountains.Tools;
-
+using DG.Tweening;
 namespace MoreMountains.CorgiEngine
 {
 
@@ -13,15 +13,19 @@ namespace MoreMountains.CorgiEngine
         float cooldown;
         bool endCool;
 
+        CorgiController corgi;
         IEnumerator onCoolTime()
         {
-            yield return new WaitForSecondsRealtime(1f);
+            yield return new WaitForSecondsRealtime(0.23f);
+
+            yield return new WaitForSecondsRealtime(0.8f);
             endCool = true;
         }
 
         // Start is called before the first frame update
         void Start()
         {
+            corgi = this.GetComponent<CorgiController>();
             isFaceRight = true;
             endCool = true;
             controller =this.GetComponent<CorgiController>();
@@ -38,7 +42,7 @@ namespace MoreMountains.CorgiEngine
             {
                 isFaceRight = false;
             }
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 if(endCool == true)
                 {
@@ -46,19 +50,17 @@ namespace MoreMountains.CorgiEngine
                     CharacterAbility.removeStemina(dashSt);
                     if (isFaceRight)
                     {
-
+                        //corgi.enabled = false;
                         endCool = false;
-                        controller.AddVerticalForce(9);
-                        controller.AddHorizontalForce(-100);
+                        this.transform.DOLocalJump(new Vector3(this.transform.localPosition.x - 3f, this.transform.localPosition.y, this.transform.localPosition.z), 1, 1, 0.2f, false);
                         StartCoroutine(onCoolTime());
 
                     }
                     else
                     {
-
+                        //corgi.enabled = false;
                         endCool = false;
-                        controller.AddVerticalForce(9);
-                        controller.AddHorizontalForce(+100);
+                        this.transform.DOLocalJump(new Vector3(this.transform.localPosition.x + 3f, this.transform.localPosition.y, this.transform.localPosition.z), 1, 1, 0.2f, false);
                         StartCoroutine(onCoolTime());
 
                     }

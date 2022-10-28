@@ -163,7 +163,8 @@ namespace MoreMountains.CorgiEngine
 		{
 
 			base.WeaponUse();
-			_meleeWeaponAttack = StartCoroutine(MeleeWeaponAttack());
+			if (usingSkill == false)
+				_meleeWeaponAttack = StartCoroutine(MeleeWeaponAttack());
 
 		
 
@@ -180,7 +181,7 @@ namespace MoreMountains.CorgiEngine
 
 
 			once = true;
-
+			usingSkill = true;
 			stunZone.SetActive(true);
 			_attackInProgress = true;
 			yield return new WaitForSeconds(InitialDelay);
@@ -222,6 +223,7 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		protected virtual void DisableDamageArea()
 		{
+			usingSkill = false;
 			Weapon.once = false;
 			_damageAreaCollider.enabled = false;
 		}

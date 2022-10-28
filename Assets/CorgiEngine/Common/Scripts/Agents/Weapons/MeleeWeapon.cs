@@ -164,7 +164,8 @@ namespace MoreMountains.CorgiEngine
 		{
 
 			base.WeaponUse();
-			_meleeWeaponAttack = StartCoroutine(MeleeWeaponAttack());
+			if (usingSkill == false)
+				_meleeWeaponAttack = StartCoroutine(MeleeWeaponAttack());
 			
 
 

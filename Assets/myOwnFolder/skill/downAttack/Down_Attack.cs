@@ -168,7 +168,12 @@ namespace MoreMountains.CorgiEngine
 		{
 
 			base.WeaponUse();
-			_meleeWeaponAttack = StartCoroutine(MeleeWeaponAttack());
+
+			if(usingSkill == false  )
+			{
+				_meleeWeaponAttack = StartCoroutine(MeleeWeaponAttack());
+			}
+
 
 		
 
@@ -183,7 +188,7 @@ namespace MoreMountains.CorgiEngine
 
 			if (_attackInProgress) { yield break; }
 
-
+			usingSkill = true;
 			once = true;
 
 			corgi.enabled = false;
@@ -252,6 +257,7 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		protected virtual void DisableDamageArea()
 		{
+			usingSkill = false;
 			corgi.enabled = true;
 			ani.SetBool("jumpAttack", false);
 			StartCoroutine(wait());
