@@ -122,6 +122,8 @@ namespace MoreMountains.CorgiEngine
 		public MMInput.IMButton Skill1Button { get; protected set; }
 
 		public MMInput.IMButton SkillAButton { get; protected set; }
+
+		public MMInput.IMButton SkillSButton { get; protected set; }
 		/// the shoot button
 
 		/// the shoot button
@@ -229,6 +231,7 @@ namespace MoreMountains.CorgiEngine
 
 			ButtonList.Add(Skill1Button = new MMInput.IMButton(PlayerID, "Skill1", Skill1Down, Skill1Pressed, Skill1Up));
 			ButtonList.Add(SkillAButton = new MMInput.IMButton(PlayerID, "SkillA", SkillADown, SkillAPressed, SkillAUp));
+			ButtonList.Add(SkillSButton = new MMInput.IMButton(PlayerID, "SkillS", SkillSDown, SkillSPressed, SkillSUp));
 
 			ButtonList.Add(SecondaryShootButton = new MMInput.IMButton(PlayerID, "SecondaryShoot", SecondaryShootButtonDown, SecondaryShootButtonPressed, SecondaryShootButtonUp));
 			ButtonList.Add(ReloadButton = new MMInput.IMButton (PlayerID, "Reload", ReloadButtonDown, ReloadButtonPressed, ReloadButtonUp));
@@ -552,6 +555,12 @@ namespace MoreMountains.CorgiEngine
 		public virtual void SkillADown() { SkillAButton.State.ChangeState(MMInput.ButtonStates.ButtonDown);  }
 		public virtual void SkillAPressed() { SkillAButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
 		public virtual void SkillAUp() { SkillAButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
+
+
+		public virtual void SkillSDown() { SkillSButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
+		public virtual void SkillSPressed() { SkillSButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
+		public virtual void SkillSUp() { SkillSButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
+
 
 		public virtual void GripButtonDown()               { GripButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
 		public virtual void GripButtonPressed()            { GripButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
