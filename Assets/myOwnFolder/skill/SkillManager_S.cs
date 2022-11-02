@@ -10,8 +10,8 @@ namespace MoreMountains.CorgiEngine
 	/// the current weapon's Animations
 	/// Animator parameters : defined from the Weapon's inspector
 	/// </summary>
-	[AddComponentMenu("Corgi Engine/Character/Abilities/SkillManager_A")]
-	public class SkillManager_A : CharacterAbility
+	[AddComponentMenu("Corgi Engine/Character/Abilities/SkillManager_S")]
+	public class SkillManager_S : CharacterAbility
 	{
 		/// This method is only used to display a helpbox text at the beginning of the ability's inspector
 		public override string HelpBoxText() { return "This component will allow your character to pickup and use weapons. What the weapon will do is defined in the Weapon classes. This just describes the behaviour of the 'hand' holding the weapon, not the weapon itself. Here you can set an initial weapon for your character to start with, allow weapon pickup, and specify a weapon attachment (a transform inside of your character, could be just an empty child gameobject, or a subpart of your model."; }
@@ -208,7 +208,7 @@ namespace MoreMountains.CorgiEngine
         protected override void HandleInput()
 		{
 			// 
-			if ((_inputManager.SkillAButton.State.CurrentState == MMInput.ButtonStates.ButtonDown) || (_inputManager.ShootAxis == MMInput.ButtonStates.ButtonDown))
+			if ((_inputManager.SkillSButton.State.CurrentState == MMInput.ButtonStates.ButtonDown) || (_inputManager.ShootAxis == MMInput.ButtonStates.ButtonDown))
 			{
 				canIntrupted = false;
 				ShootStart();
@@ -216,7 +216,7 @@ namespace MoreMountains.CorgiEngine
 
 			if (CurrentWeapon != null)
 			{
-				if (ContinuousPress && (CurrentWeapon.TriggerMode == Weapon.TriggerModes.Auto) && (_inputManager.SkillAButton.State.CurrentState == MMInput.ButtonStates.ButtonDown))
+				if (ContinuousPress && (CurrentWeapon.TriggerMode == Weapon.TriggerModes.Auto) && (_inputManager.SkillSButton.State.CurrentState == MMInput.ButtonStates.ButtonDown))
 				{
 					ShootStart();
 				}
@@ -231,7 +231,7 @@ namespace MoreMountains.CorgiEngine
 				Reload();
 			}
 
-			if ((_inputManager.SkillAButton.State.CurrentState == MMInput.ButtonStates.ButtonUp) || (_inputManager.ShootAxis == MMInput.ButtonStates.ButtonUp))
+			if ((_inputManager.SkillSButton.State.CurrentState == MMInput.ButtonStates.ButtonUp) || (_inputManager.ShootAxis == MMInput.ButtonStates.ButtonUp))
 			{
 				ShootStop();
 			}
@@ -239,7 +239,7 @@ namespace MoreMountains.CorgiEngine
 			if (CurrentWeapon != null)
 			{
 				if ((CurrentWeapon.WeaponState.CurrentState == Weapon.WeaponStates.WeaponDelayBetweenUses)
-					&& ((_inputManager.ShootAxis == MMInput.ButtonStates.Off) && (_inputManager.SkillAButton.State.CurrentState == MMInput.ButtonStates.Off)))
+					&& ((_inputManager.ShootAxis == MMInput.ButtonStates.Off) && (_inputManager.SkillSButton.State.CurrentState == MMInput.ButtonStates.Off)))
 				{
 					CurrentWeapon.WeaponInputStop();
 				}
@@ -324,16 +324,15 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		public virtual void ShootStop()
 		{
-
+			/*
 			// 여기에 추가해줘야 애니메이션 캔슬이 가능합니다!
 			if(CurrentWeapon.name == "wheelWind(Clone)")
 			{
 				main_animator.SetBool("wheel", false);
 				moveStop = CurrentWeapon.GetComponent<CharacterHandleWeapon>();
 				moveStop.ShootStart();
-
-
 			}
+	*/
 			if (CurrentWeapon.name == "DownAttack(Clone)" || CurrentWeapon.name == "CrossAttack(Clone)" || CurrentWeapon.name == "HardAttack(Clone)")
 			{
 				return;

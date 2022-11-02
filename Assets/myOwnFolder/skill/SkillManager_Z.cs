@@ -315,7 +315,10 @@ namespace MoreMountains.CorgiEngine
 			{
 				return;
 			}
-
+			if (CurrentWeapon.name == "DownAttack(Clone)" || CurrentWeapon.name == "CrossAttack(Clone)" || CurrentWeapon.name == "HardAttack(Clone)")
+			{
+				return;
+			}
 			if (!CanShootFromLadders && _movement.CurrentState == CharacterStates.MovementStates.LadderClimbing && CurrentWeapon.WeaponState.CurrentState == Weapon.WeaponStates.WeaponIdle)
 			{
 				return;

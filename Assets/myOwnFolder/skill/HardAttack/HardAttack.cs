@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using MoreMountains.Tools;
-using DG.Tweening;
+
 namespace MoreMountains.CorgiEngine
 {
 
@@ -12,12 +12,12 @@ namespace MoreMountains.CorgiEngine
 	/// <summary>
 	/// A basic melee weapon class, that will activate a "hurt zone" when the weapon is used
 	/// </summary>
-	[AddComponentMenu("Corgi Engine/Weapons/Down_Attack")]
-	public class Down_Attack : Weapon
+	[AddComponentMenu("Corgi Engine/Weapons/HardAttack")]
+	public class HardAttack : Weapon
 	{
 
 		public CorgiController controller;
-
+		public CharacterHorizontalMovement movement;
 		private void Start()
 		{
 			//controller = GameObject.Find("RetroCorgi").GetComponent<CorgiController>();
@@ -98,11 +98,6 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		/// 
 		public GameObject stunzone;
-		public Animator ani;
-		public CorgiController corgi;
-		public GameObject player;
-		public Character direction;
-		public CharacterHorizontalMovement movement;
 		public override void Initialization()
 		{
 			base.Initialization();
@@ -168,17 +163,13 @@ namespace MoreMountains.CorgiEngine
 		{
 
 			base.WeaponUse();
-
-			if(usingSkill == false  )
-			{
+			if (usingSkill == false)
 				_meleeWeaponAttack = StartCoroutine(MeleeWeaponAttack());
-			}
-
 
 		
 
 		}
-		
+
 		/// <summary>
 		/// Triggers an attack, turning the damage area on and then off
 		/// </summary>
@@ -188,44 +179,21 @@ namespace MoreMountains.CorgiEngine
 
 			if (_attackInProgress) { yield break; }
 
-			usingSkill = true;
+			movement.SetHorizontalMove(0f);
+			movement.MovementForbidden = true;
+
 			once = true;
-
-			corgi.enabled = false;
-			ani.SetBool("jumpAttack", true);
-			movement.enabled = false;
-
-			if (direction.IsFacingRight)
-            {
-				player.transform.DOLocalJump(new Vector3(player.transform.localPosition.x + 3f, player.transform.localPosition.y, player.transform.localPosition.z), 3, 1, 0.6f, false);
-
-			}
-			else if (direction.IsFacingRight == false)
-			{
-				player.transform.DOLocalJump(new Vector3(player.transform.localPosition.x - 3f, player.transform.localPosition.y, player.transform.localPosition.z), 3, 1, 0.6f, false);
-
-			}
+			usingSkill = true;
 			stunZone.SetActive(true);
 			_attackInProgress = true;
 			yield return new WaitForSeconds(InitialDelay);
 			EnableDamageArea();
 
-			//yield return MMCoroutine.WaitForFrames(1);
-			//HandleMiss();
-
+			yield return MMCoroutine.WaitForFrames(1);
+			HandleMiss();
 			yield return new WaitForSeconds(ActiveDuration);
-
-
 			DisableDamageArea();
 			_attackInProgress = false;
-			Debug.Log("11");
-
-
-
-		}
-
-		void endattack()
-        {
 
 		}
 
@@ -257,20 +225,13 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		protected virtual void DisableDamageArea()
 		{
-	
+			movement.MovementForbidden = false;
+
 			usingSkill = false;
-			corgi.enabled = true;
-			ani.SetBool("jumpAttack", false);
-			StartCoroutine(wait());
 			Weapon.once = false;
 			_damageAreaCollider.enabled = false;
+		}
 
-		}
-		IEnumerator wait()
-        {
-			yield return new WaitForSecondsRealtime(0.1f);
-			movement.enabled = true;
-		}
 		/// <summary>
 		/// Draws the melee weapon's range
 		/// </summary>

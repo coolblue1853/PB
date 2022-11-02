@@ -42,7 +42,7 @@ namespace MoreMountains.CorgiEngine
             {
                 isFaceRight = false;
             }
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.D))
             {
                 if(endCool == true)
                 {

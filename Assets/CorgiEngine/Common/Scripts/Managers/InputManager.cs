@@ -124,6 +124,21 @@ namespace MoreMountains.CorgiEngine
 		public MMInput.IMButton SkillAButton { get; protected set; }
 
 		public MMInput.IMButton SkillSButton { get; protected set; }
+
+
+		public MMInput.IMButton SkillDButton { get; protected set; }
+
+
+
+		public MMInput.IMButton SkillFButton { get; protected set; }
+
+		public MMInput.IMButton SkillQButton { get; protected set; }
+
+		public MMInput.IMButton SkillWButton { get; protected set; }
+
+		public MMInput.IMButton SkillEButton { get; protected set; }
+
+		public MMInput.IMButton SkillRButton { get; protected set; }
 		/// the shoot button
 
 		/// the shoot button
@@ -232,6 +247,14 @@ namespace MoreMountains.CorgiEngine
 			ButtonList.Add(Skill1Button = new MMInput.IMButton(PlayerID, "Skill1", Skill1Down, Skill1Pressed, Skill1Up));
 			ButtonList.Add(SkillAButton = new MMInput.IMButton(PlayerID, "SkillA", SkillADown, SkillAPressed, SkillAUp));
 			ButtonList.Add(SkillSButton = new MMInput.IMButton(PlayerID, "SkillS", SkillSDown, SkillSPressed, SkillSUp));
+			ButtonList.Add(SkillDButton = new MMInput.IMButton(PlayerID, "SkillD", SkillDDown, SkillDPressed, SkillDUp));
+			ButtonList.Add(SkillFButton = new MMInput.IMButton(PlayerID, "SkillF", SkillFDown, SkillFPressed, SkillFUp));
+			ButtonList.Add(SkillQButton = new MMInput.IMButton(PlayerID, "SkillQ", SkillQDown, SkillQPressed, SkillQUp));
+			ButtonList.Add(SkillWButton = new MMInput.IMButton(PlayerID, "SkillW", SkillWDown, SkillWPressed, SkillWUp));
+			ButtonList.Add(SkillEButton = new MMInput.IMButton(PlayerID, "SkillE", SkillEDown, SkillEPressed, SkillEUp));
+			ButtonList.Add(SkillRButton = new MMInput.IMButton(PlayerID, "SkillR", SkillRDown, SkillRPressed, SkillRUp));
+
+
 
 			ButtonList.Add(SecondaryShootButton = new MMInput.IMButton(PlayerID, "SecondaryShoot", SecondaryShootButtonDown, SecondaryShootButtonPressed, SecondaryShootButtonUp));
 			ButtonList.Add(ReloadButton = new MMInput.IMButton (PlayerID, "Reload", ReloadButtonDown, ReloadButtonPressed, ReloadButtonUp));
@@ -561,6 +584,29 @@ namespace MoreMountains.CorgiEngine
 		public virtual void SkillSPressed() { SkillSButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
 		public virtual void SkillSUp() { SkillSButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
 
+		public virtual void SkillDDown() { SkillDButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
+		public virtual void SkillDPressed() { SkillDButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
+		public virtual void SkillDUp() { SkillDButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
+
+		public virtual void SkillFDown() { SkillFButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
+		public virtual void SkillFPressed() { SkillFButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
+		public virtual void SkillFUp() { SkillFButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
+
+		public virtual void SkillQDown() { SkillQButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
+		public virtual void SkillQPressed() { SkillQButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
+		public virtual void SkillQUp() { SkillQButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
+
+		public virtual void SkillWDown() { SkillWButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
+		public virtual void SkillWPressed() { SkillWButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
+		public virtual void SkillWUp() { SkillWButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
+
+		public virtual void SkillRDown() { SkillRButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
+		public virtual void SkillRPressed() { SkillRButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
+		public virtual void SkillRUp() { SkillRButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
+
+		public virtual void SkillEDown() { SkillEButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
+		public virtual void SkillEPressed() { SkillEButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
+		public virtual void SkillEUp() { SkillEButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
 
 		public virtual void GripButtonDown()               { GripButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
 		public virtual void GripButtonPressed()            { GripButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }

@@ -10,8 +10,8 @@ namespace MoreMountains.CorgiEngine
 	/// the current weapon's Animations
 	/// Animator parameters : defined from the Weapon's inspector
 	/// </summary>
-	[AddComponentMenu("Corgi Engine/Character/Abilities/SkillManager_S")]
-	public class SkillManager_S : CharacterAbility
+	[AddComponentMenu("Corgi Engine/Character/Abilities/SkillManager_Q")]
+	public class SkillManager_Q : CharacterAbility
 	{
 		/// This method is only used to display a helpbox text at the beginning of the ability's inspector
 		public override string HelpBoxText() { return "This component will allow your character to pickup and use weapons. What the weapon will do is defined in the Weapon classes. This just describes the behaviour of the 'hand' holding the weapon, not the weapon itself. Here you can set an initial weapon for your character to start with, allow weapon pickup, and specify a weapon attachment (a transform inside of your character, could be just an empty child gameobject, or a subpart of your model."; }
@@ -101,19 +101,16 @@ namespace MoreMountains.CorgiEngine
 		protected bool _charHztlMvmtFlipInitialSetting;
 		protected bool _charHztlMvmtFlipInitialSettingSet = false;
 		protected Vector2 _invertedHorizontalAimMultiplier = new Vector2(-1f, 1f);
-		protected CorgiController _colliderCorgiController;
+
 		// Initialization
 		protected override void Initialization()
 		{
-
-			one = true;
 			base.Initialization();
 			if (_characterHorizontalMovement != null)
 			{
 				_charHztlMvmtFlipInitialSetting = _characterHorizontalMovement.FlipCharacterToFaceDirection;
 			}
 			Setup();
-
 		}
 
 		/// <summary>
@@ -208,7 +205,7 @@ namespace MoreMountains.CorgiEngine
         protected override void HandleInput()
 		{
 			// 
-			if ((_inputManager.SkillSButton.State.CurrentState == MMInput.ButtonStates.ButtonDown) || (_inputManager.ShootAxis == MMInput.ButtonStates.ButtonDown))
+			if ((_inputManager.SkillQButton.State.CurrentState == MMInput.ButtonStates.ButtonDown) || (_inputManager.ShootAxis == MMInput.ButtonStates.ButtonDown))
 			{
 				canIntrupted = false;
 				ShootStart();
@@ -216,7 +213,7 @@ namespace MoreMountains.CorgiEngine
 
 			if (CurrentWeapon != null)
 			{
-				if (ContinuousPress && (CurrentWeapon.TriggerMode == Weapon.TriggerModes.Auto) && (_inputManager.SkillSButton.State.CurrentState == MMInput.ButtonStates.ButtonDown))
+				if (ContinuousPress && (CurrentWeapon.TriggerMode == Weapon.TriggerModes.Auto) && (_inputManager.SkillQButton.State.CurrentState == MMInput.ButtonStates.ButtonDown))
 				{
 					ShootStart();
 				}
@@ -231,7 +228,7 @@ namespace MoreMountains.CorgiEngine
 				Reload();
 			}
 
-			if ((_inputManager.SkillSButton.State.CurrentState == MMInput.ButtonStates.ButtonUp) || (_inputManager.ShootAxis == MMInput.ButtonStates.ButtonUp))
+			if ((_inputManager.SkillQButton.State.CurrentState == MMInput.ButtonStates.ButtonUp) || (_inputManager.ShootAxis == MMInput.ButtonStates.ButtonUp))
 			{
 				ShootStop();
 			}
@@ -239,7 +236,7 @@ namespace MoreMountains.CorgiEngine
 			if (CurrentWeapon != null)
 			{
 				if ((CurrentWeapon.WeaponState.CurrentState == Weapon.WeaponStates.WeaponDelayBetweenUses)
-					&& ((_inputManager.ShootAxis == MMInput.ButtonStates.Off) && (_inputManager.SkillSButton.State.CurrentState == MMInput.ButtonStates.Off)))
+					&& ((_inputManager.ShootAxis == MMInput.ButtonStates.Off) && (_inputManager.SkillQButton.State.CurrentState == MMInput.ButtonStates.Off)))
 				{
 					CurrentWeapon.WeaponInputStop();
 				}
@@ -271,15 +268,8 @@ namespace MoreMountains.CorgiEngine
 		/// <summary>
 		/// Causes the character to start shooting
 		/// </summary>
-		/// 
-
-		public bool one = true;
 		public virtual void ShootStart()
-
-		{           // 여기에 추가해줘야 애니메이션 시작이 가능합니다!
-
-
-
+		{
 
 			// if the Shoot action is enabled in the permissions, we continue, if not we do nothing.  If the player is dead we do nothing.
 			if (!AbilityAuthorized
@@ -309,35 +299,15 @@ namespace MoreMountains.CorgiEngine
 			PlayAbilityStartFeedbacks();
 			MMCharacterEvent.Trigger(_character, MMCharacterEventTypes.HandleWeapon, MMCharacterEvent.Moments.Start);
 			CurrentWeapon.WeaponInputStart();
-
 	
-		}
-		
-		public Animator main_animator;
-        private void Update()
-        {
 
-        }
-		protected CharacterHandleWeapon moveStop;
+		}
+
 		/// <summary>
 		/// Causes the character to stop shooting
 		/// </summary>
 		public virtual void ShootStop()
 		{
-			/*
-			// 여기에 추가해줘야 애니메이션 캔슬이 가능합니다!
-			if(CurrentWeapon.name == "wheelWind(Clone)")
-			{
-				main_animator.SetBool("wheel", false);
-				moveStop = CurrentWeapon.GetComponent<CharacterHandleWeapon>();
-				moveStop.ShootStart();
-			}
-	*/
-			if (CurrentWeapon.name == "DownAttack(Clone)")
-			{
-				return;
-			}
-			one = true;
 			// if the Shoot action is enabled in the permissions, we continue, if not we do nothing
 			if (!AbilityAuthorized
 				|| (CurrentWeapon == null)
@@ -350,6 +320,14 @@ namespace MoreMountains.CorgiEngine
 			{
 				return;
 			}
+			//중간 캔슬이 불가능한 기술들.
+			if (CurrentWeapon.name == "DownAttack(Clone)" || CurrentWeapon.name == "CrossAttack(Clone)" || CurrentWeapon.name == "HardAttack(Clone)")
+			{
+				return;
+			}
+
+
+
 
 			if ((CurrentWeapon.WeaponState.CurrentState == Weapon.WeaponStates.WeaponReload)
 				|| (CurrentWeapon.WeaponState.CurrentState == Weapon.WeaponStates.WeaponReloadStart)
