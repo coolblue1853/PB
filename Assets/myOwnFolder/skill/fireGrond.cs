@@ -29,9 +29,16 @@ namespace MoreMountains.CorgiEngine
 				RegisterEvents();
 			}
 			StartCoroutine(MeleeWeaponAttack());
+			StartCoroutine(destoryFire());
 		}
 
 
+
+		public IEnumerator destoryFire()
+        {
+			yield return new WaitForSecondsRealtime(3f);
+			Destroy(this.gameObject);
+        }
 
 		/// the possible shapes for the melee weapon's damage area
 		public enum MeleeDamageAreaShapes { Rectangle, Circle }

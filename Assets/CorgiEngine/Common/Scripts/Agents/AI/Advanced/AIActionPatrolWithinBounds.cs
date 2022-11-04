@@ -48,6 +48,8 @@ namespace MoreMountains.CorgiEngine
 		/// <summary>
 		/// When patrolling we make sure we don't exceed our bounds
 		/// </summary>
+		/// 
+		int rand_derc;
 		protected override void Patrol()
 		{
 			if (_character == null)
@@ -63,6 +65,15 @@ namespace MoreMountains.CorgiEngine
 			CheckForWalls();
 			CheckForHoles();
 			CheckForDistance();
+
+
+
+
+
+
+
+
+
 			_characterHorizontalMovement.SetHorizontalMove(_direction.x);
 		}
 
@@ -95,6 +106,15 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		public override void OnEnterState()
 		{
+			rand_derc = Random.RandomRange(0, 2);
+			if (rand_derc == 0)
+			{
+				_direction = Vector2.right;
+			}
+			else if (rand_derc == 1)
+			{
+				_direction = Vector2.left;
+			}
 			base.OnEnterState();
 			if (BoundsMethod == BoundsMethods.BasedOnStateEnterPosition)
 			{
