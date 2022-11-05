@@ -152,7 +152,7 @@ MonoBehaviour:
     m_Bits: 268443904
   DamageCaused: 10
   Knockback: 1
-  KnockbackForce: {x: 0, y: 3}
+  KnockbackForce: {x: 3, y: 3}
   InvincibilityDuration: 0.04
   stunzone: {fileID: 0}
 --- !u!114 &114246937138071502
@@ -2126,7 +2126,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   StunMode: 1
-  StunDuration: 2
+  StunDuration: 0.3
   DisableZoneOnStun: 1
   AutoDisable: 1
   AutoDisableDuration: 0.3

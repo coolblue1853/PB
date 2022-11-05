@@ -50,7 +50,8 @@ namespace MoreMountains.CorgiEngine
 		{
 			StopAllCoroutines();
 
-			_stunCoroutine = StartCoroutine(StunCoroutine(duration));
+			if(this.gameObject != null)
+				_stunCoroutine = StartCoroutine(StunCoroutine(duration));
 		}
 
 		/// <summary>
