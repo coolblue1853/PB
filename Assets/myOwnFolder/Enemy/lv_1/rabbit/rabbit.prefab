@@ -292,6 +292,10 @@ GameObject:
   - component: {fileID: 1132483562908409607}
   - component: {fileID: 1132483562908409604}
   - component: {fileID: 1132483562908409608}
+  - component: {fileID: -1624567777874543000}
+  - component: {fileID: -3509684021178498273}
+  - component: {fileID: 6849398690765459715}
+  - component: {fileID: 5811014472021361162}
   m_Layer: 13
   m_Name: rabbit
   m_TagString: Enemy
@@ -306,8 +310,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132483562908409600}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: -4.12, z: 10.172434}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3620236453050826158}
@@ -612,6 +616,7 @@ MonoBehaviour:
   UseMaterialPropertyBlocks: 0
   MasterHealth: {fileID: 0}
   TargetDamageResistanceProcessor: {fileID: 0}
+  _healthBar: {fileID: 0}
   characterStun: {fileID: 0}
 --- !u!114 &1132483562908409623
 MonoBehaviour:
@@ -947,9 +952,30 @@ MonoBehaviour:
       - {fileID: 1132483562908409607}
     Transitions:
       array:
-      - Decision: {fileID: 0}
+      - Decision: {fileID: -3509684021178498273}
+        TrueState: runWait
+        FalseState: 
+  - StateName: dex
+    Actions:
+      array:
+      - {fileID: 6849398690765459715}
+    Transitions:
+      array:
+      - Decision: {fileID: -3509684021178498273}
         TrueState: 
         FalseState: 
+  - StateName: runWait
+    Actions:
+      array:
+      - {fileID: 1132483562908409625}
+    Transitions:
+      array:
+      - Decision: {fileID: 5811014472021361162}
+        TrueState: dex
+        FalseState: 
+      - Decision: {fileID: -3509684021178498273}
+        TrueState: 
+        FalseState: Run
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
@@ -1037,6 +1063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Label: 
   NumberOfHits: 1
+  hitt: 0
 --- !u!114 &1132483562908409606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,6 +1138,67 @@ MonoBehaviour:
   Label: 
   AfterTimeMin: 2
   AfterTimeMax: 3
+--- !u!114 &-1624567777874543000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132483562908409600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b822e5742f77f142bb32289197e9d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1132483562908409606}
+--- !u!114 &-3509684021178498273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132483562908409600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c522f668e1b331438fd11022c69a8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+  Radius: 0.3
+  DetectionOriginOffset: {x: 0, y: 0, z: 0}
+  TargetLayer:
+    serializedVersion: 2
+    m_Bits: 1073741824
+--- !u!114 &6849398690765459715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132483562908409600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5286969d935e28e4cb39352f2fa43596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  OnlyRunOnce: 1
+--- !u!114 &5811014472021361162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132483562908409600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b7939ffd2f5df4e8efb5fa83e99637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: runWaitTime
+  AfterTimeMin: 2
+  AfterTimeMax: 2
 --- !u!1 &6493058127848136847
 GameObject:
   m_ObjectHideFlags: 0

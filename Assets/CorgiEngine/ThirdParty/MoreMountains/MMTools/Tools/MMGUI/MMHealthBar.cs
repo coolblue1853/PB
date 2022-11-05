@@ -352,11 +352,52 @@ namespace MoreMountains.Tools
 			}
 		}
 
+		public virtual void DestoryBAr()
+		{
+			_progressBar.gameObject.SetActive(false);
+			if (_progressBar == null)
+			{
+				return;
+			}
+
+			if (_finalHideStarted)
+			{
+				return;
+			}
+
+			UpdateDrawnColors();
+
+			if (AlwaysVisible)
+			{
+				return;
+			}
+
+			if (_showBar)
+			{
+				_progressBar.gameObject.SetActive(true);
+				float currentTime = (TimeScale == TimeScales.UnscaledTime) ? Time.unscaledTime : Time.time;
+				if (currentTime - _lastShowTimestamp > DisplayDurationOnHit)
+				{
+					_showBar = false;
+				}
+			}
+			else
+			{
+
+			}
+		}
+
+		public virtual void disBar()
+        {
+			_showBar = false;
+			_progressBar.gameObject.SetActive(false);
+
+		}
 		/// <summary>
 		/// Hides the bar when it reaches zero
 		/// </summary>
 		/// <returns>The hide bar.</returns>
-		protected virtual IEnumerator FinalHideBar()
+		public virtual IEnumerator FinalHideBar()
 		{
 			_finalHideStarted = true;
 			if (InstantiatedOnDeath != null)

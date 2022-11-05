@@ -18,7 +18,7 @@ namespace MoreMountains.CorgiEngine
 
 		protected int _hitCounter;
 		protected Health _health;
-
+		public int hitt;
 		/// <summary>
 		/// On init we grab our Health component
 		/// </summary>
@@ -26,6 +26,7 @@ namespace MoreMountains.CorgiEngine
 		{
 			_health = _brain.gameObject.GetComponentInParent<Health>();
 			_hitCounter = 0;
+
 		}
 
 		/// <summary>
@@ -68,10 +69,11 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		protected virtual void OnHit()
 		{
-			_hitCounter++;
+
+			   _hitCounter++;
 		}
 
-		/// <summary>
+		/// <summary>                                                             
 		/// Grabs our health component and starts listening for OnHit events
 		/// </summary>
 		protected virtual void OnEnable()
@@ -83,6 +85,7 @@ namespace MoreMountains.CorgiEngine
 
 			if (_health != null)
 			{
+				hitt = 1;
 				_health.OnHit += OnHit;
 			}
 		}

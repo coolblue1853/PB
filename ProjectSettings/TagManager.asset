@@ -10,6 +10,7 @@ TagManager:
   - NoMask
   - Rope
   - Enemy
+  - Hole
   layers:
   - Default
   - TransparentFX
@@ -41,7 +42,7 @@ TagManager:
   - Pushables
   - Stairs
   - 
-  - 
+  - Hole
   - 
   m_SortingLayers:
   - name: Background
