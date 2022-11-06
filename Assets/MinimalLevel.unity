@@ -1442,11 +1442,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: wolfSummnor
       objectReference: {fileID: 0}
-    - target: {fileID: 9134335433146992556, guid: 8050fc7ab160d414da77515ee832623f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9134335433146992558, guid: 8050fc7ab160d414da77515ee832623f,
         type: 3}
       propertyPath: m_RootOrder

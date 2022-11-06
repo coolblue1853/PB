@@ -155,7 +155,7 @@ namespace MoreMountains.Tools
 		protected Image _foregroundImage = null;
 		protected Image _delayedImage = null;
 		protected bool _finalHideStarted = false;
-
+		protected bool wait = false;
 		/// <summary>
 		/// On Start, creates or sets the health bar up
 		/// </summary>
@@ -166,6 +166,14 @@ namespace MoreMountains.Tools
 			Initialization();
 		}
 
+
+		IEnumerator startWait()
+        {
+			yield return new WaitForSecondsRealtime(0.3f);
+			wait = true;
+
+
+		}
 		/// <summary>
 		/// On enable, initializes the bar again
 		/// </summary>
@@ -202,7 +210,8 @@ namespace MoreMountains.Tools
 				_progressBar = Instantiate(HealthBarPrefab, transform.position + HealthBarOffset, transform.rotation) as MMProgressBar;
 
 				SceneManager.MoveGameObjectToScene(_progressBar.gameObject, this.gameObject.scene);
-				_progressBar.transform.SetParent(this.transform);
+		
+				//_progressBar.transform.SetParent(this.transform);
 				_progressBar.gameObject.name = "HealthBar";
 			}
 
@@ -221,6 +230,7 @@ namespace MoreMountains.Tools
 			{
 				_progressBar.SetBar(100f, 0f, 100f);
 			}
+			_progressBar.transform.parent = this.transform;
 		}
 
 		/// <summary>

@@ -4,7 +4,7 @@ using UnityEngine;
 using MoreMountains.Tools;
 namespace MoreMountains.CorgiEngine
 {
-    public class WolfFirst : MonoBehaviour
+    public class WolfFirst1 : MonoBehaviour
     {
         Animator ani;
         MMHealthBar bar;
@@ -12,10 +12,15 @@ namespace MoreMountains.CorgiEngine
         // Start is called before the first frame update
         private void Awake()
         {
-            ani = this.GetComponent<Animator>();
-            bar = this.GetComponent<MMHealthBar>();
-            ani.SetBool("Alive", true);
 
+            StartCoroutine(oneSec());
+        }
+        IEnumerator oneSec()
+        {
+            yield return new WaitForSeconds(0.3f);
+            inside.SetActive(true);
+            inside.transform.parent = null;
+            Destroy(this.gameObject);
         }
 
 
