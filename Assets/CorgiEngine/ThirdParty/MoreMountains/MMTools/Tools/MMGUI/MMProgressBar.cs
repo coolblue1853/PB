@@ -8,7 +8,7 @@ using TMPro;
 #endif
 using UnityEngine.Events;
 using UnityEngine.Serialization;
-
+using UnityEngine;
 namespace MoreMountains.Tools
 {
 	/// <summary>
@@ -19,6 +19,7 @@ namespace MoreMountains.Tools
 	[AddComponentMenu("More Mountains/Tools/GUI/MMProgressBar")]
 	public class MMProgressBar : MMMonoBehaviour
 	{
+		
 		public enum MMProgressBarStates {Idle, Decreasing, Increasing, InDecreasingDelay, InIncreasingDelay }
 		/// the possible fill modes 
 		public enum FillModes { LocalScale, FillAmount, Width, Height, Anchor }
@@ -469,6 +470,7 @@ namespace MoreMountains.Tools
 
 
 		#endregion TESTS
+		
 
 		protected virtual void UpdateText()
 		{

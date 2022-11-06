@@ -8,20 +8,24 @@ namespace MoreMountains.CorgiEngine
 	/// <summary>
 	/// An AIACtion used to have an AI kill itself
 	/// </summary>
-	[AddComponentMenu("Corgi Engine/Character/AI/Actions/AIActionRunAway")]
-	public class AIActionRunAway : AIAction
+	[AddComponentMenu("Corgi Engine/Character/AI/Actions/AIActionSummonWolf")]
+	public class AIActionSummonWolf : AIAction
 	{
 		public bool OnlyRunOnce = true;
-        
+
 		protected Character _character;
 		protected MMHealthBar _health;
 		protected Health health;
 		protected bool _alreadyRan = false;
-        
-		/// <summary>
-		/// On init we grab our Health
-		/// </summary>
-		public override void Initialization()
+
+		public GameObject wolfS;
+
+        /// <summary>
+        /// On init we grab our Health
+        /// </summary>
+        /// 
+
+        public override void Initialization()
 		{
 			base.Initialization();
 			_character = this.gameObject.GetComponentInParent<Character>();
@@ -34,10 +38,8 @@ namespace MoreMountains.CorgiEngine
 		/// </summary>
 		public override void PerformAction()
 		{
-			_health.disBar();
-			//health.desBar();
-			_brain.BrainActive = false;
-			this.gameObject.SetActive(false);
+			GameObject wolf = Instantiate(wolfS, new Vector2(this.transform.position.x, this.transform.position.y), this.transform.rotation);
+
 			Destroy(this.gameObject);
 		}
 

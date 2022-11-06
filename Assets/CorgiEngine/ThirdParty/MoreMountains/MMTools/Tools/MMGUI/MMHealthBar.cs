@@ -161,6 +161,8 @@ namespace MoreMountains.Tools
 		/// </summary>
 		protected virtual void Awake()
 		{
+
+
 			Initialization();
 		}
 
@@ -179,10 +181,13 @@ namespace MoreMountains.Tools
 
 		public virtual void Initialization()
 		{
+
+
 			_finalHideStarted = false;
 
 			if (_progressBar != null)
 			{
+
 				_progressBar.gameObject.SetActive(AlwaysVisible);
 				return;
 			}
@@ -195,6 +200,7 @@ namespace MoreMountains.Tools
 					return;
 				}
 				_progressBar = Instantiate(HealthBarPrefab, transform.position + HealthBarOffset, transform.rotation) as MMProgressBar;
+
 				SceneManager.MoveGameObjectToScene(_progressBar.gameObject, this.gameObject.scene);
 				_progressBar.transform.SetParent(this.transform);
 				_progressBar.gameObject.name = "HealthBar";
@@ -320,6 +326,8 @@ namespace MoreMountains.Tools
 		/// </summary>
 		protected virtual void Update()
 		{
+		
+
 			if (_progressBar == null) 
 			{
 				return; 
