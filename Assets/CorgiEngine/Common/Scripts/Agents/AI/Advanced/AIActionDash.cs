@@ -12,6 +12,8 @@ namespace MoreMountains.CorgiEngine
 	// [RequireComponent(typeof(CharacterDash))]
 	public class AIActionDash : AIAction
 	{
+		protected DamageOnTouch damageT;
+
 		protected CharacterDash _characterDash;
 
 		/// <summary>

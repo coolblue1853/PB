@@ -23,6 +23,8 @@ namespace MoreMountains.CorgiEngine
 
 		[Header("Dash")]
 
+		protected DamageOnTouch Damage;
+
 		/// the distance this dash should cover
 		[Tooltip("the distance this dash should cover")]
 		public float DashDistance = 3f;
@@ -111,6 +113,8 @@ namespace MoreMountains.CorgiEngine
 			base.Initialization();
 			Aim.Initialization();
 			_characterDive = _character?.FindAbility<CharacterDive>();
+
+			Damage = _character.GetComponent<DamageOnTouch>();
 			SuccessiveDashesLeft = SuccessiveDashAmount;
 		}
 
@@ -181,6 +185,8 @@ namespace MoreMountains.CorgiEngine
             else
             {
 				InitiateDash();
+				if(Damage != null)
+					Damage.enabled = true;
 			}
 			
 
@@ -442,7 +448,6 @@ namespace MoreMountains.CorgiEngine
 		public virtual void StopDash()
 		{
 
-
 			CharacterAbility.isAction = false;
 			if (_dashCoroutine != null)
 			{
@@ -483,6 +488,10 @@ namespace MoreMountains.CorgiEngine
 					_movement.RestorePreviousState();
 				}
 			}
+
+			if (Damage != null)
+				Damage.enabled = false;
+
 		}
 
 		/// <summary>
