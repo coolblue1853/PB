@@ -5065,8 +5065,8 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   CurrentHealth: 0
-  InitialHealth: 100
-  MaximumHealth: 100
+  InitialHealth: 9999
+  MaximumHealth: 9999
   Invulnerable: 0
   once: 0
   TemporarilyInvulnerable: 0
@@ -5093,6 +5093,7 @@ MonoBehaviour:
   UseMaterialPropertyBlocks: 0
   MasterHealth: {fileID: 0}
   TargetDamageResistanceProcessor: {fileID: 0}
+  _healthBar: {fileID: 0}
   characterStun: {fileID: 0}
 --- !u!114 &114552395418788484
 MonoBehaviour:
